@@ -1,0 +1,49 @@
+body {
+    font-family: Calibri, Arial, serif;
+    background-color: #E2F0D9;
+}
+
+ul.pagination {
+    display: table;
+    margin: 15px auto;
+}
+
+.box {
+    width: 100%;
+    display: block;
+    background: #A9D18E;
+    border: #507E32 1px solid;
+    margin: 15px 0;
+    padding: 10px;
+    box-shadow: rgba(80, 126, 50, 0.5) 0.5px 0.5px 3px;
+}
+
+.box h1 {
+    margin: 0 0 10px 0;
+    font-size: 18pt;
+    font-weight: bold;
+    color: black;
+    text-shadow: rgba(255, 255, 255, 0.5) 0.3px 0.3px 1px;
+}
+
+.box h2 {
+    margin: 0 0 10px 0;
+    font-size: 16pt;
+    font-weight: bold;
+    color: black;
+    text-shadow: rgba(255, 255, 255, 0.5) 0.3px 0.3px 1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
