@@ -1,40 +1,52 @@
 body {
-    font-family: Calibri, Arial, serif;
-    background-color: #E2F0D9;
 }
 
-ul.pagination {
-    display: table;
-    margin: 15px auto;
+.navbar {
+    position: relative;
+    margin-bottom: 20px;
 }
 
-.box {
-    width: 100%;
-    display: block;
-    background: #A9D18E;
-    border: #507E32 1px solid;
-    margin: 15px 0;
-    padding: 10px;
-    box-shadow: rgba(80, 126, 50, 0.5) 0.5px 0.5px 3px;
+#login-form legend, #register-form legend {
+    font-weight: 600;
+    color: #325d88;
 }
 
-.box h1 {
-    margin: 0 0 10px 0;
-    font-size: 18pt;
-    font-weight: bold;
-    color: black;
-    text-shadow: rgba(255, 255, 255, 0.5) 0.3px 0.3px 1px;
+#login-form button, #register-form  button{
+    width: 49%;
+    margin-left: 0.2%;
+    font-size: 1em;
 }
 
-.box h2 {
-    margin: 0 0 10px 0;
-    font-size: 16pt;
-    font-weight: bold;
-    color: black;
-    text-shadow: rgba(255, 255, 255, 0.5) 0.3px 0.3px 1px;
-}
+/*ul.pagination {*/
+/*display: table;*/
+/*margin: 15px auto;*/
+/*}*/
 
+/*.box {*/
+/*width: 100%;*/
+/*display: block;*/
+/*background: #A9D18E;*/
+/*border: #507E32 1px solid;*/
+/*margin: 15px 0;*/
+/*padding: 10px;*/
+/*box-shadow: rgba(80, 126, 50, 0.5) 0.5px 0.5px 3px;*/
+/*}*/
 
+/*.box h1 {*/
+/*margin: 0 0 10px 0;*/
+/*font-size: 18pt;*/
+/*font-weight: bold;*/
+/*color: black;*/
+/*text-shadow: rgba(255, 255, 255, 0.5) 0.3px 0.3px 1px;*/
+/*}*/
+
+/*.box h2 {*/
+/*margin: 0 0 10px 0;*/
+/*font-size: 16pt;*/
+/*font-weight: bold;*/
+/*color: black;*/
+/*text-shadow: rgba(255, 255, 255, 0.5) 0.3px 0.3px 1px;*/
+/*}*/
 
 
 
