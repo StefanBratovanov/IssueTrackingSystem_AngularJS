@@ -1,10 +1,10 @@
 'use strict';
-app.factory('notifyService', function () {
+issueTracker.factory('notifyService', function () {
     return {
         showInfo: function (msg) {
             noty({
                     text: msg,
-                    type: 'info',
+                    type: 'success',
                     layout: 'topCenter',
                     timeout: 1000
                 }

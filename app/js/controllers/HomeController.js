@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('HomeController',
+issueTracker.controller('HomeController',
     function ($scope, $rootScope) {
         
 

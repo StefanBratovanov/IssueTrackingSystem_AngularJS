@@ -15,7 +15,7 @@ issueTracker.controller('AuthenticationController', function ($scope, $rootScope
     $scope.register = function (userData) {
         authenticationService.register(userData,
             function success() {
-                notifyService.showInfo("User registered successfully");
+                notifyService.showInfo("User registration successful");
                 $location.path("dashboard");
             },
             function error(err) {

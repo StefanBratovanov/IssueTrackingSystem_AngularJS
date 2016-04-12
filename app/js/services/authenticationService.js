@@ -2,31 +2,44 @@
 
 issueTracker.factory('authenticationService', function ($http, baseServiceUrl) {
     return {
-        register: function (userData, success, error) {
+        register: function (userRegisterData, success, error) {
             var request = {
                 method: 'POST',
                 url: baseServiceUrl + 'api/account/register',
-                data: userData
+                data: userRegisterData
             };
 
-            $http(request).success(function (responseData) {
-                sessionStorage['currentUser'] = JSON.stringify(responseData);
-                success(responseData);
-            }).error(error);
+            $http(request).success(function (response) {
+                var getTokenRequest = {
+                    method: 'POST',
+                    url: baseServiceUrl + 'api/token',
+                    data: 'grant_type=password&username=' + userRegisterData.email + '&password=' + userRegisterData.password,
+                    headers: {
+                        ContentType: "application/x-www-form-urlencoded"
+                    }
+                };
+
+                $http(getTokenRequest).success(function (response) {
+                    var userData = response;
+                    userData.isAdmin = false;
+                    sessionStorage['currentUser'] = JSON.stringify(userData);
+                    success(response);
+                }).error(error);
+            });
         },
 
-        login: function (userData, success, error) {
-            var request = {
+        login: function (userLoginData, success, error) {
+            var getTokenRequest = {
                 method: 'POST',
                 url: baseServiceUrl + 'api/token',
-                data: 'grant_type=password&username=' + userData.username + '&password=' + userData.password,
+                data: 'grant_type=password&username=' + userLoginData.username + '&password=' + userLoginData.password,
                 headers: {
                     ContentType: "application/x-www-form-urlencoded"
                 }
             };
 
-            $http(request).success(function (responseData) {
-                var userData = responseData;
+            $http(getTokenRequest).success(function (response) {
+                var userData = response;
 
                 var userDataRequest = {
                     method: 'GET',
@@ -34,13 +47,11 @@ issueTracker.factory('authenticationService', function ($http, baseServiceUrl) {
                     headers: {Authorization: 'Bearer ' + userData.access_token}
                 };
 
-                $http(userDataRequest).success(function (data) {
-                    userData.isAdmin = data.isAdmin;
+                $http(userDataRequest).success(function (response) {
+                    userData.isAdmin = response.isAdmin;
                     sessionStorage['currentUser'] = JSON.stringify(userData);
-                    success(data);
-
+                    success(response);
                 }).error(error);
-
             }).error(error);
         },
 
