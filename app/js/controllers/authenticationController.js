@@ -5,7 +5,7 @@ issueTracker.controller('AuthenticationController', function ($scope, $rootScope
         authenticationService.login(userData,
             function success() {
                 notifyService.showInfo("Login successful");
-                $location.path("dashboard");
+                $location.path("/");
             },
             function error(err) {
                 notifyService.showError("Login failed", err);
@@ -16,7 +16,7 @@ issueTracker.controller('AuthenticationController', function ($scope, $rootScope
         authenticationService.register(userData,
             function success() {
                 notifyService.showInfo("User registration successful");
-                $location.path("dashboard");
+                $location.path("/");
             },
             function error(err) {
                 notifyService.showError("User registration failed", err);
