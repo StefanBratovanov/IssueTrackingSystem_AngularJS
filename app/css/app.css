@@ -29,37 +29,22 @@ ul.nav.navbar-nav.navbar-right > ul > li a {
     font-size: 1em;
 }
 
-/*ul.pagination {*/
-/*display: table;*/
-/*margin: 15px auto;*/
-/*}*/
+table > tbody > tr > td > a {
+    float: right;
+}
 
-/*.box {*/
-/*width: 100%;*/
-/*display: block;*/
-/*background: #A9D18E;*/
-/*border: #507E32 1px solid;*/
-/*margin: 15px 0;*/
-/*padding: 10px;*/
-/*box-shadow: rgba(80, 126, 50, 0.5) 0.5px 0.5px 3px;*/
-/*}*/
+table > tbody > tr > td {
+    font-weight: 900;
+    font-size: 1.1em;
+}
 
-/*.box h1 {*/
-/*margin: 0 0 10px 0;*/
-/*font-size: 18pt;*/
-/*font-weight: bold;*/
-/*color: black;*/
-/*text-shadow: rgba(255, 255, 255, 0.5) 0.3px 0.3px 1px;*/
-/*}*/
+table > thead > tr > th {
+    font-size: 1.3em;
+}
 
-/*.box h2 {*/
-/*margin: 0 0 10px 0;*/
-/*font-size: 16pt;*/
-/*font-weight: bold;*/
-/*color: black;*/
-/*text-shadow: rgba(255, 255, 255, 0.5) 0.3px 0.3px 1px;*/
-/*}*/
-
+.btn-sm {
+    padding: 2px 30px;
+}
 
 
 

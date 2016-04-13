@@ -17,6 +17,11 @@ var issueTracker = angular.module('IssueTrackingSystem', [
             controller: 'userEditProfileController'
         });
 
+        $routeProvider.when('/projects',{
+            templateUrl: 'templates/projects/all-projects.html',
+            controller: 'projectsController'
+        });
+
         $routeProvider.otherwise(
             {
                 redirectTo: '/'

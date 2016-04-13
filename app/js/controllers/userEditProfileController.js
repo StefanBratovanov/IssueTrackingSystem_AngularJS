@@ -1,3 +1,5 @@
+'use strict';
+
 issueTracker.controller('userEditProfileController', function ($scope, $location, authenticationService, notifyService) {
     $scope.changePassword = function (passData) {
         authenticationService.changePassword(passData,
