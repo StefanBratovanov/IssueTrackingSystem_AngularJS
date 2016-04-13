@@ -8,14 +8,13 @@ var issueTracker = angular.module('IssueTrackingSystem', [
     .constant('pageSize', 2)
     .config(function ($routeProvider) {
         $routeProvider.when('/', {
-            //templateUrl: 'templates/home.html',
             templateUrl: 'templates/user/dashboard.html',
             controller: 'AuthenticationController'
         });
 
-        $routeProvider.when('/dashboard', {
-            templateUrl: 'templates/user/dashboard.html',
-            controller: 'HomeController'
+        $routeProvider.when('/user/profile',{
+            templateUrl: 'templates/user/edit-password.html',
+            controller: 'userEditProfileController'
         });
 
         $routeProvider.otherwise(

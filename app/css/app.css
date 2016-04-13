@@ -6,12 +6,24 @@ body {
     margin-bottom: 20px;
 }
 
+.navbar-brand {
+    font-size: 22px;
+}
+
+.navbar .nav > li > a {
+    font-size: 14px;
+}
+
+ul.nav.navbar-nav.navbar-right > ul > li a {
+    text-transform: none;
+}
+
 #login-form legend, #register-form legend {
     font-weight: 600;
     color: #325d88;
 }
 
-#login-form button, #register-form  button{
+#login-form button, #register-form button, #change-password-form button, #change-password-form a {
     width: 49%;
     margin-left: 0.2%;
     font-size: 1em;

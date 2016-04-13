@@ -5,7 +5,6 @@
     <title>Issue Tracking System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.css"/>
-    <!--<link rel="stylesheet" href="css/bootstrap.min.css"/>-->
     <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
@@ -19,38 +18,36 @@
                 <span class="icon-bar"></span>
             </button>
         </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
+        <div ng-if="authenticationService.isLoggedIn()" class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Themes <span
-                            class="caret"></span></a>
-                    <ul class="dropdown-menu" aria-labelledby="themes">
-                        <li><a href="#">Default</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#/">1</a></li>
-                        <li><a href="#/">2</a></li>
-                    </ul>
+                <li>
+                    <a href="#/">Dashboard</a>
                 </li>
                 <li>
-                    <a href="#/">Help</a>
+                    <a href="#/projects">Projects</a>
                 </li>
                 <li>
                     <a href="#/">Home</a>
                 </li>
-
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Built With Bootstrap</a></li>
-                <li><a href="#">WrapBootstrap</a></li>
-            </ul>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#/user/profile">{{authenticationService.getCurrentUser().userName}}</a>
+                    </li>
+                    <li>
+                        <a ng-click="logout()" class="link">LOGOUT</a>
+                    </li>
+                </ul>
         </div>
+        </ul>
     </div>
+</div>
 </div>
 
 
 <div class="container">
-    <div ng-view="">
-    </div>
+    <div ng-view=""></div>
 </div>
 
 <footer id="app-footer"></footer>
@@ -65,9 +62,12 @@
 
 <script src="js/app.js"></script>
 <script src="js/services/notifyService.js"></script>
+<script src="js/services/authenticationService.js"></script>
 
-<script src="js/controllers/AppController.js"></script>
-<script src="js/controllers/HomeController.js"></script>
+<script src="js/controllers/appController.js"></script>
+<script src="js/controllers/homeController.js"></script>
+<script src="js/controllers/authenticationController.js"></script>
+<script src="js/controllers/userEditProfileController.js"></script>
 
 </body>
 </html>

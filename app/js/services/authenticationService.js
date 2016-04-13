@@ -54,30 +54,37 @@ issueTracker.factory('authenticationService', function ($http, baseServiceUrl) {
                 }).error(error);
             }).error(error);
         },
+
         logout: function () {
             delete sessionStorage['currentUser'];
         },
+
         getCurrentUser: function () {
             var userObject = sessionStorage['currentUser'];
             if (userObject) {
                 return JSON.parse(sessionStorage['currentUser']);
             }
         },
+
         isAnonymous: function () {
             return sessionStorage['currentUser'] == undefined;
         },
+
         isLoggedIn: function () {
             var userObject = sessionStorage['currentUser'];
             return userObject;
         },
+
         isNormalUser: function () {
             var currentUser = this.getCurrentUser();
             return (currentUser != undefined) && (!currentUser.isAdmin);
         },
+
         isAdmin: function () {
             var currentUser = this.getCurrentUser();
             return (currentUser != undefined) && (currentUser.isAdmin);
         },
+
         getAuthHeaders: function () {
             var headers = {};
             var currentUser = this.getCurrentUser();
@@ -85,6 +92,17 @@ issueTracker.factory('authenticationService', function ($http, baseServiceUrl) {
                 headers['Authorization'] = 'Bearer ' + currentUser.access_token;
             }
             return headers;
+        },
+
+        changePassword: function (passwordData, success, error) {
+            var request = {
+                method: 'POST',
+                url: baseServiceUrl + 'api/Account/ChangePassword',
+                data: passwordData,
+                headers: this.getAuthHeaders()
+            };
+
+            $http(request).success(success).error(error);
         }
     }
 });
