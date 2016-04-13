@@ -22,6 +22,11 @@ var issueTracker = angular.module('IssueTrackingSystem', [
             controller: 'projectsController'
         });
 
+        $routeProvider.when('/projects/:id',{
+            templateUrl: 'templates/projects/project-page.html',
+            controller: 'projectsController'
+        });
+
         $routeProvider.otherwise(
             {
                 redirectTo: '/'

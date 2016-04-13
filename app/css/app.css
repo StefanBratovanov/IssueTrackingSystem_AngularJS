@@ -29,6 +29,10 @@ ul.nav.navbar-nav.navbar-right > ul > li a {
     font-size: 1em;
 }
 
+div.well.bs-component {
+    background-color: #eee;
+}
+
 table > tbody > tr > td > a {
     float: right;
 }

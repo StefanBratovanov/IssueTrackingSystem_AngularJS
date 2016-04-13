@@ -1,0 +1,7 @@
+<div>{{projectData.ProjectKey}}</div>
+<div>ProjectKey:{{projectData.ProjectKey}}"</div>
+<div>Name:<input type="text" value="{{projectData.ProjectKey}}"></div>
+<div>Description:<input type="text" value="{{projectData.Description}}"></div>
+<div>LeadId:(currentId:{{projectData.Lead.Id}})<input type="text" value="{{projectData.Lead.Username}}"></div>
+<div>Labels: <span ng-repeat="label in projectData.Labels">{{label.Name}}, </span></div>
+<div>Priorities: <span ng-repeat="prioritiy in projectData.Priorities">{{prioritiy.Name}}, </span></div>

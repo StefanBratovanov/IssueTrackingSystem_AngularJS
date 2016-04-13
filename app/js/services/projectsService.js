@@ -8,6 +8,17 @@ issueTracker.factory('projectsService', function ($http, baseServiceUrl, authent
             };
 
             $http(getAllProjectsRequest).success(success).error(error);
+        },
+
+        getProjectById: function (id, success, error) {
+            if (id) {
+                var request = {
+                    method: 'GET',
+                    url: baseServiceUrl + '/projects/' + id,
+                    headers: authenticationService.getAuthHeaders()
+                };
+                $http(request).success(success).error(error);
+            }
         }
     }
 });

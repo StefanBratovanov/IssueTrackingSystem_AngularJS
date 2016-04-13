@@ -9,8 +9,8 @@
     </thead>
     <tbody>
     <tr ng-repeat="project in allProjects">
-        <td ng-if="$odd" class="info">{{project.Name}} <a href="#" class="btn btn-primary btn-sm">View</a></td>
-        <td ng-if="$even" class="success">{{project.Name}} <a href="#" class="btn btn-primary btn-sm">View</a></td>
+        <td ng-if="$odd" class="info">{{project.Name}} <a href="#projects/{{project.Id}}" class="btn btn-primary btn-sm">View</a></td>
+        <td ng-if="$even" class="success">{{project.Name}} <a href="#projects/{{project.Id}}" class="btn btn-primary btn-sm">View</a></td>
     </tr>
     </tbody>
 </table>
