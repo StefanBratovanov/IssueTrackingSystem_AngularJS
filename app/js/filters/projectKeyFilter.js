@@ -1,9 +1,9 @@
 issueTracker.filter('firstLetters', function () {
     return function (input, scope) {
         if (input != null) {
-            input = input.split(' ');
+           var tokens = input.split(' ');
             var result = "";
-            input.forEach(function (element) {
+            tokens.forEach(function (element) {
                 result += element.substring(0, 1)
             });
 
