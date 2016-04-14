@@ -1,9 +1,14 @@
 'use strict';
 
-issueTracker.controller('projectsController', function ($scope, $routeParams, $location, authenticationService, projectsService, notifyService) {
+issueTracker.controller('ProjectsController', function ($scope,
+                                                        $routeParams,
+                                                        $location,
+                                                        authenticationService,
+                                                        projectsService,
+                                                        notifyService,
+                                                        usersService) {
     projectsService.getAllProjects(
         function success(data) {
-            console.log(data);
             $scope.allProjects = data;
         },
         function error(err) {
@@ -19,6 +24,16 @@ issueTracker.controller('projectsController', function ($scope, $routeParams, $l
             notifyService.showError("Project loading failed", err);
         }
     );
+
+    usersService.getAllUsers(
+        function success(data) {
+            $scope.users = data;
+        },
+        function error(err) {
+            notifyService.showError("Project loading failed", err);
+        }
+    );
+
 
 });
 

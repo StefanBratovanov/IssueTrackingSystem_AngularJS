@@ -66,6 +66,12 @@
         </div>
     </div>
 </div>
+<div ng-if="authenticationService.isAdmin()">
+    <p>Hi. admin</p>
+    <a href="#/projects/add" class="btn btn-lg btn-success">Add New Project</a>
+    <button class="btn btn-lg btn-success">Add New Issue</button>
+</div>
+
 
 <div ng-if="authenticationService.isLoggedIn()">
     <head>
@@ -100,4 +106,5 @@
             </tbody>
         </table>
     </div>
+
 </div>

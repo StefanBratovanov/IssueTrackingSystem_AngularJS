@@ -18,15 +18,24 @@ ul.nav.navbar-nav.navbar-right > ul > li a {
     text-transform: none;
 }
 
-#login-form legend, #register-form legend {
+#login-form legend, #register-form legend,#add-project-form legend {
     font-weight: 600;
     color: #325d88;
 }
 
-#login-form button, #register-form button, #change-password-form button, #change-password-form a {
+#login-form button,
+#register-form button,
+#change-password-form button,
+#change-password-form a,
+#add-project-form button,
+#add-project-form a {
     width: 49%;
     margin-left: 0.2%;
     font-size: 1em;
+}
+
+#add-project-form div label {
+    text-align: left;
 }
 
 div.well.bs-component {
@@ -50,7 +59,9 @@ table > thead > tr > th {
     padding: 2px 30px;
 }
 
-
+.navbar-right > ul > li:first-child > a {
+    color: #8fbaf7;
+}
 
 
 

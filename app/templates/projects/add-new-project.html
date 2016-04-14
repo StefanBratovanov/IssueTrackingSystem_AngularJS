@@ -1,0 +1,73 @@
+<div class="col-lg-8" ng-if="authenticationService.isAdmin()">
+    <div class="well bs-component">
+        <form class="form-horizontal" name="change-password" id="add-project-form">
+            <legend>Add new Project</legend>
+            <div class="form-group">
+                <label for="projectName" class="col-lg-4 control-label">Project Name</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" id="projectName" placeholder="Project Name"
+                           ng-model="projectData.Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="projectLeader" class="col-lg-4 control-label">Leader</label>
+                <div class="col-lg-8">
+                    <select id="projectLeader" class="form-control" ng-model="projectData.UserId">
+                        <option ng-repeat="user in users" value="{{user.Id}}">{{user.Username}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="projectKey" class="col-lg-4 control-label">Project Key</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" id="projectKey"
+                           ng-model="projectData.Key" placeholder="{{projectData.Name|firstLetters}}"
+                           value="{{projectData.Name|firstLetters}}" disabled>
+                    <!--ng-model="projectData.Key" ng-init="projectData.Key=projectData.Name|firstLetters" value="{{projectData.Name|firstLetters}}">-->
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="projectPriorities" class="col-lg-4 control-label">Priorities (comma separated)</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" id="projectPriorities"
+                           ng-model="projectData.Priorities">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="projectLabels" class="col-lg-4 control-label">Labels (comma separated)</label>
+                <div class="col-lg-8">
+                    <input auto-complete type="text" class="form-control" id="projectLabels"
+                           ng-model="projectData.Labels"
+                           ng-change="autoComplete()"
+                           >
+                    <!--auto-complete>-->
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="projectDescription" class="col-lg-4 control-label">Description</label>
+                <div class="col-lg-8">
+                    <textarea class="form-control" id="projectDescription" placeholder="Description"
+                              ng-model="projectData.Description"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-8 col-lg-offset-4">
+                    <button type="submit" class="btn btn-primary changePass" ng-click="addProject(projectData)">Add
+                        Project
+                    </button>
+                    <a href="#/" class="btn btn-default">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!--<div class="col-lg-8">-->
+    <!--<input type="text" class="form-control" id="projectLabels"-->
+           <!--ng-model="projectData.Labels"-->
+           <!--ng-change="getLabels(projectData.Labels)"-->
+           <!--items="{{labels}}"-->
+           <!--auto-complete>-->
+    <!--&lt;!&ndash;auto-complete>&ndash;&gt;-->
+<!--</div>-->

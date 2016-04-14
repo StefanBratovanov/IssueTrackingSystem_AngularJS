@@ -12,20 +12,27 @@ var issueTracker = angular.module('IssueTrackingSystem', [
             controller: 'AuthenticationController'
         });
 
-        $routeProvider.when('/user/profile',{
+        $routeProvider.when('/user/profile', {
             templateUrl: 'templates/user/edit-password.html',
-            controller: 'userEditProfileController'
+            controller: 'UserEditProfileController'
         });
 
-        $routeProvider.when('/projects',{
+        $routeProvider.when('/projects', {
             templateUrl: 'templates/projects/all-projects.html',
-            controller: 'projectsController'
+            controller: 'ProjectsController'
         });
 
-        $routeProvider.when('/projects/:id',{
-            templateUrl: 'templates/projects/project-page.html',
-            controller: 'projectsController'
+        $routeProvider.when('/projects/add', {
+            templateUrl: 'templates/projects/add-new-project.html',
+            controller: 'AdminController'
         });
+
+        $routeProvider.when('/projects/:id', {
+            templateUrl: 'templates/projects/project-page.html',
+            controller: 'ProjectsController'
+        });
+
+
 
         $routeProvider.otherwise(
             {
@@ -33,4 +40,13 @@ var issueTracker = angular.module('IssueTrackingSystem', [
             }
         );
     });
+
+issueTracker.run(function ($rootScope, $location, authenticationService) {
+    $rootScope.$on('$locationChangeStart', function (event) {
+        if (!authenticationService.isLoggedIn()) {
+            // Authorization check: anonymous site visitors cannot access user routes
+            $location.path("/");
+        }
+    });
+});
 

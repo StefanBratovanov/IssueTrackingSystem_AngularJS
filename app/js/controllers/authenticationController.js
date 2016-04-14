@@ -1,6 +1,9 @@
 'use strict';
 
-issueTracker.controller('AuthenticationController', function ($scope, $location, authenticationService, notifyService) {
+issueTracker.controller('AuthenticationController', function ($scope,
+                                                              $location,
+                                                              authenticationService,
+                                                              notifyService) {
     $scope.login = function (userData) {
         authenticationService.login(userData,
             function success() {

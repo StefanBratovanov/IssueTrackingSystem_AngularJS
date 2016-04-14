@@ -1,4 +1,5 @@
 'use strict';
+
 issueTracker.factory('notifyService', function () {
     return {
         showInfo: function (msg) {
