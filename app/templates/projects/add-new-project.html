@@ -6,13 +6,15 @@
                 <label for="projectName" class="col-lg-4 control-label">Project Name</label>
                 <div class="col-lg-8">
                     <input type="text" class="form-control" id="projectName" placeholder="Project Name"
-                           ng-model="projectData.Name">
+                           ng-model="projectData.Name"
+                           ng-blur="setProjectKey(projectData.Name)"
+                           required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="projectLeader" class="col-lg-4 control-label">Leader</label>
                 <div class="col-lg-8">
-                    <select id="projectLeader" class="form-control" ng-model="projectData.UserId">
+                    <select id="projectLeader" class="form-control" ng-model="projectData.LeadId" required>
                         <option ng-repeat="user in users" value="{{user.Id}}">{{user.Username}}</option>
                     </select>
                 </div>
@@ -21,39 +23,41 @@
                 <label for="projectKey" class="col-lg-4 control-label">Project Key</label>
                 <div class="col-lg-8">
                     <input type="text" class="form-control" id="projectKey"
-                           ng-model="projectData.Key" placeholder="{{projectData.Name|firstLetters}}"
-                           value="{{projectData.Name|firstLetters}}" disabled>
-                    <!--ng-model="projectData.Key" ng-init="projectData.Key=projectData.Name|firstLetters" value="{{projectData.Name|firstLetters}}">-->
+                           ng-model=projectKey
+                           required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="projectPriorities" class="col-lg-4 control-label">Priorities (comma separated)</label>
                 <div class="col-lg-8">
                     <input type="text" class="form-control" id="projectPriorities"
-                           ng-model="projectData.Priorities">
+                           ng-model="projectData.Priorities"
+                           required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="projectLabels" class="col-lg-4 control-label">Labels (comma separated)</label>
                 <div class="col-lg-8">
-                    <input auto-complete type="text" class="form-control" id="projectLabels"
+                    <input type="text" class="form-control" id="projectLabels"
+                           auto-complete
                            ng-model="projectData.Labels"
                            ng-change="autoComplete()"
-                           >
-                    <!--auto-complete>-->
+                           required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="projectDescription" class="col-lg-4 control-label">Description</label>
                 <div class="col-lg-8">
                     <textarea class="form-control" id="projectDescription" placeholder="Description"
-                              ng-model="projectData.Description"></textarea>
+                              ng-model="projectData.Description"
+                              required>
+                    </textarea>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-8 col-lg-offset-4">
-                    <button type="submit" class="btn btn-primary changePass" ng-click="addProject(projectData)">Add
-                        Project
+                    <button type="submit" class="btn btn-primary changePass"
+                            ng-click="addProject(projectData, projectKey)">Add Project
                     </button>
                     <a href="#/" class="btn btn-default">Cancel</a>
                 </div>
@@ -64,10 +68,10 @@
 
 
 <!--<div class="col-lg-8">-->
-    <!--<input type="text" class="form-control" id="projectLabels"-->
-           <!--ng-model="projectData.Labels"-->
-           <!--ng-change="getLabels(projectData.Labels)"-->
-           <!--items="{{labels}}"-->
-           <!--auto-complete>-->
-    <!--&lt;!&ndash;auto-complete>&ndash;&gt;-->
+<!--<input type="text" class="form-control" id="projectKey"-->
+<!--ng-model="projectData.Key"-->
+<!--placeholder="{{projectData.Name|firstLetters}}"-->
+<!--ng-init="projectData.Key=projectData.Name|firstLetters"-->
+<!--value="{{projectData.Name|firstLetters}}"-->
+<!--required>-->
 <!--</div>-->

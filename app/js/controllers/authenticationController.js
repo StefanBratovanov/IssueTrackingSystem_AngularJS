@@ -3,6 +3,7 @@
 issueTracker.controller('AuthenticationController', function ($scope,
                                                               $location,
                                                               authenticationService,
+                                                              projectsService,
                                                               notifyService) {
     $scope.login = function (userData) {
         authenticationService.login(userData,

@@ -30,7 +30,13 @@ issueTracker.factory('projectsService', function ($http, baseServiceUrl, authent
                 headers: authenticationService.getAuthHeaders()
             };
             $http(getLabelsRequest).success(success).error(error);
+        },
+
+        isAdmin: function () {
+            var currentUser = authenticationService.getCurrentUser();
+            return (currentUser != undefined) && (currentUser.isAdmin);
         }
+
     }
 });
 
