@@ -14,8 +14,9 @@
             <div class="form-group">
                 <label for="projectLeader" class="col-lg-4 control-label">Leader</label>
                 <div class="col-lg-8">
-                    <select id="projectLeader" class="form-control" ng-model="projectData.LeadId" required>
-                        <option ng-repeat="user in users" value="{{user.Id}}">{{user.Username}}</option>
+                    <select id="projectLeader" class="form-control"
+                            ng-model="projectData.LeadId" required>
+                        <option ng-repeat="user in allUsers" value="{{user.Id}}">{{user.Username}}</option>
                     </select>
                 </div>
             </div>

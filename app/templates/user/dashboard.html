@@ -85,14 +85,15 @@
                 <tr ng-repeat="project in allProjects">
                     <td ng-if="project.Lead.Username== authenticationService.getCurrentUser().userName" class="info">
                         {{project.Name}}
+                    </td>
+                    <td ng-if="project.Lead.Username== authenticationService.getCurrentUser().userName" class="info">
+                        <a href="#/projects/{{project.Id}}/add-issue" class="btn btn-default btn-sm">Add Issue</a>
                         <a href="#projects/{{project.Id}}" class="btn btn-primary btn-sm">View</a>
                     </td>
                 </tr>
             </table>
         </div>
     </div>
-
-
 
 
 </div>

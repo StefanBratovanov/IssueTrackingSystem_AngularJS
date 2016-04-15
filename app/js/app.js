@@ -32,6 +32,11 @@ var issueTracker = angular.module('IssueTrackingSystem', [
             controller: 'ProjectsController'
         });
 
+        $routeProvider.when('/projects/:id/add-issue', {
+            templateUrl: 'templates/user/add-new-issue.html',
+            controller: 'ProjectsController'
+        });
+
 
 
         $routeProvider.otherwise(
