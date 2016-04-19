@@ -13,14 +13,18 @@ issueTracker.factory('issuesService', function ($http, baseServiceUrl, authentic
             $http(addIssueRequest).success(success).error(error);
         },
 
-        getAllIssues: function (success, error) {
+        getUserIssues: function (params, success, error) {
             var getAllProjectsRequest = {
                 method: 'GET',
-                url: baseServiceUrl + 'projects',
+                url: baseServiceUrl + 'issues/me?orderBy=Project.Name desc,IssueKey&pageSize=' + params.pageSize + '&pageNumber=' + params.startPage,
                 headers: authenticationService.getAuthHeaders()
             };
 
             $http(getAllProjectsRequest).success(success).error(error);
-        },
+        }
+
     }
 });
+
+
+

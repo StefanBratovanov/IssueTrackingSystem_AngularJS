@@ -42,12 +42,35 @@ issueTracker.factory('projectsService', function ($http, baseServiceUrl, authent
             $http(getLabelsRequest).success(success).error(error);
         },
 
+        getProjectsByLeadId: function (id, params, success, error) {
+            if (id) {
+                var getProjectsRequest = {
+                    method: 'GET',
+                    url: baseServiceUrl + 'projects/?filter=Lead.Id=' + '"' + id + '"' + '&pageSize=' + params.pageSize + '&pageNumber=' + params.startPage,
+                    headers: authenticationService.getAuthHeaders()
+                };
+                $http(getProjectsRequest).success(success).error(error);
+            }
+        },
+
+
         isAdmin: function () {
             var currentUser = authenticationService.getCurrentUser();
             return (currentUser != undefined) && (currentUser.isAdmin);
         }
     }
 });
+
+//getAllProjects: function (success, error) {
+//    var getAllProjectsRequest = {
+//        method: 'GET',
+//        url: baseServiceUrl + 'projects',
+//        headers: authenticationService.getAuthHeaders()
+//    };
+//
+//    $http(getAllProjectsRequest).success(success).error(error);
+//},
+
 
 //getLabels: function (label, success, error) {
 //    var getLabelsRequest = {
@@ -57,3 +80,4 @@ issueTracker.factory('projectsService', function ($http, baseServiceUrl, authent
 //    };
 //    $http(getLabelsRequest).success(success).error(error);
 //}
+

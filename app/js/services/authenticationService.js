@@ -49,6 +49,7 @@ issueTracker.factory('authenticationService', function ($http, baseServiceUrl) {
 
                 $http(userDataRequest).success(function (response) {
                     userData.isAdmin = response.isAdmin;
+                    userData.Id = response.Id;
                     sessionStorage['currentUser'] = JSON.stringify(userData);
                     success(response);
                 }).error(error);
@@ -64,10 +65,6 @@ issueTracker.factory('authenticationService', function ($http, baseServiceUrl) {
             if (userObject) {
                 return JSON.parse(sessionStorage['currentUser']);
             }
-        },
-
-        isAnonymous: function () {
-            return sessionStorage['currentUser'] == undefined;
         },
 
         isLoggedIn: function () {

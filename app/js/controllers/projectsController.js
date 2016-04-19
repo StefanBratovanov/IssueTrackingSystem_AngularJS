@@ -14,15 +14,6 @@ issueTracker.controller('ProjectsController', function ($scope,
         'pageSize': pageSize
     };
 
-    projectsService.getAllProjects(
-        function success(data) {
-            $scope.allProjects = data;
-        },
-        function error(err) {
-            notifyService.showError("Projects loading failed", err);
-        }
-    );
-
     $scope.getProjects = function () {
         projectsService.getAllProjectsPagination($scope.projectParams,
             function success(data) {
@@ -46,6 +37,8 @@ issueTracker.controller('ProjectsController', function ($scope,
         }
     );
 
+
+
     projectsService.getProjectById($routeParams.id,
         function success(data) {
             $scope.projectData = data;
@@ -60,7 +53,7 @@ issueTracker.controller('ProjectsController', function ($scope,
             $scope.users = data;
         },
         function error(err) {
-            notifyService.showError("Project loading failed", err);
+            notifyService.showError("Users loading failed", err);
         }
     );
 
@@ -103,23 +96,21 @@ issueTracker.controller('ProjectsController', function ($scope,
                 notifyService.showError("Issue add failed", err);
             }
         )
-    }
+    };
+
+    var user = authenticationService.getCurrentUser();
+
+    projectsService.getProjectsByLeadId(user.Id, $scope.projectParams,
+        function success(data) {
+            $scope.userLeadProjects = data.Projects;
+        },
+        function error(err) {
+            notifyService.showError("Project loading failed", err);
+        }
+    );
 
 
 });
 
 
-//function getProjectById(id) {
-//    if (id) {
-//        projectsService.getProjectById(id,
-//            function success(data) {
-//                $scope.projectData = data;
-//            },
-//            function error(err) {
-//                notifyService.showError("Cannot load project", err);
-//            }
-//        );
-//    }
-//}
-//
-//getProjectById($routeParams.id);
+
