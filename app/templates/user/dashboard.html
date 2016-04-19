@@ -79,9 +79,12 @@
     <h3>Projects Affiliated To You</h3>
 
     <div ng-controller="ProjectsController">
-        <div class="col-lg-5">
+        <div class="col-lg-6">
             <table class="table table-striped table-hover ">
-                <th>You are Project Leader in:</th>
+                <h4>You are Project Leader in:</h4>
+                <tr>
+                    <th>Project</th>
+                </tr>
                 <tr ng-repeat="project in userLeadProjects">
                     <td ng-if="project.Lead.Username == authenticationService.getCurrentUser().userName" class="info">
                         {{project.Name}}
@@ -90,20 +93,39 @@
                     </td>
                 </tr>
             </table>
-            <table ng-controller="IssuesController" class="table table-striped table-hover ">
-                <th>You have Issues assigned to You in :</th>
+        </div>
+    </div>
+    <div ng-controller="IssuesController">
+        <div class="col-lg-6">
+
+            <table class="table table-striped table-hover ">
+                <h4>Issues assigned to You:</h4>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Project</th>
+                    <th>Due Date</th>
+                </tr>
                 <tr ng-repeat="issueData in userIssues">
-                    <td class="info">{{issueData.Project.Name}}
-                        <a href="#/projects/{{issueData.Project.Id}}/add-issue" class="btn btn-default btn-sm">Add
-                            Issue</a>
-                        <a href="#projects/{{issueData.Project.Id}}" class="btn btn-primary btn-sm">View</a>
+                    <td class="info">
+                        <a href="#/issues/{{issueData.Id}}">
+                            {{issueData.Title}}
+                        </a>
+                    </td>
+                    <td class="info">
+                        {{issueData.Description}}
+                    </td>
+                    <td class="info">
+                        <a href="#/projects/{{issueData.Project.Id}}">
+                            {{issueData.Project.Name}}
+                        </a>
+                    </td>
+                    <td class="info">
+                            {{issueData.DueDate}}
                     </td>
                 </tr>
             </table>
-
         </div>
     </div>
-
-
 </div>
 

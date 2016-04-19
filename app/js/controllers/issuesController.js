@@ -26,6 +26,18 @@ issueTracker.controller('IssuesController', function ($scope,
 
     $scope.getUserIssues();
 
+    $scope.getProjectLeaderById = function (id) {
+        issuesService.getProjectById(id,
+            function success(data) {
+                $scope.projectLeaderName = data.Lead.Username;
+            },
+            function error(err) {
+                notifyService.showError("Project loading failed", err);
+            }
+        );
+    };
+
+
 
 });
 

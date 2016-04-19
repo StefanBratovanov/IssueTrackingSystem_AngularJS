@@ -14,14 +14,26 @@ issueTracker.factory('issuesService', function ($http, baseServiceUrl, authentic
         },
 
         getUserIssues: function (params, success, error) {
-            var getAllProjectsRequest = {
+            var getUserIssuesRequest = {
                 method: 'GET',
                 url: baseServiceUrl + 'issues/me?orderBy=Project.Name desc,IssueKey&pageSize=' + params.pageSize + '&pageNumber=' + params.startPage,
                 headers: authenticationService.getAuthHeaders()
             };
 
-            $http(getAllProjectsRequest).success(success).error(error);
+            $http(getUserIssuesRequest).success(success).error(error);
+        },
+
+        getProjectById: function (id, success, error) {
+            if (id) {
+                var getProjectRequest = {
+                    method: 'GET',
+                    url: baseServiceUrl + 'projects/' + id,
+                    headers: authenticationService.getAuthHeaders()
+                };
+                $http(getProjectRequest).success(success).error(error);
+            }
         }
+
 
     }
 });

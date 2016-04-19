@@ -37,8 +37,6 @@ issueTracker.controller('ProjectsController', function ($scope,
         }
     );
 
-
-
     projectsService.getProjectById($routeParams.id,
         function success(data) {
             $scope.projectData = data;

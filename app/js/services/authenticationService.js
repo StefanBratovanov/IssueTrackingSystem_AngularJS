@@ -72,11 +72,6 @@ issueTracker.factory('authenticationService', function ($http, baseServiceUrl) {
             return userObject;
         },
 
-        isNormalUser: function () {
-            var currentUser = this.getCurrentUser();
-            return (currentUser != undefined) && (!currentUser.isAdmin);
-        },
-
         isAdmin: function () {
             var currentUser = this.getCurrentUser();
             return (currentUser != undefined) && (currentUser.isAdmin);
