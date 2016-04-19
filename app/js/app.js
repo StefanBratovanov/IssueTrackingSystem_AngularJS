@@ -5,7 +5,7 @@ var issueTracker = angular.module('IssueTrackingSystem', [
         'ui.bootstrap.pagination'
     ])
     .constant('baseServiceUrl', 'http://softuni-issue-tracker.azurewebsites.net/')
-    .constant('pageSize', 2)
+    .constant('pageSize', 6)
     .config(function ($routeProvider) {
         $routeProvider.when('/', {
             templateUrl: 'templates/user/dashboard.html',

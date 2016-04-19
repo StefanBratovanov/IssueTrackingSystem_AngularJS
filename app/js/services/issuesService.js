@@ -11,6 +11,16 @@ issueTracker.factory('issuesService', function ($http, baseServiceUrl, authentic
             };
 
             $http(addIssueRequest).success(success).error(error);
-        }
+        },
+
+        getAllIssues: function (success, error) {
+            var getAllProjectsRequest = {
+                method: 'GET',
+                url: baseServiceUrl + 'projects',
+                headers: authenticationService.getAuthHeaders()
+            };
+
+            $http(getAllProjectsRequest).success(success).error(error);
+        },
     }
 });

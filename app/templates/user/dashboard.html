@@ -69,7 +69,6 @@
 <div ng-if="authenticationService.isAdmin()">
     <p>Hi. admin</p>
     <a href="#/projects/add" class="btn btn-lg btn-success">Add New Project</a>
-    <button class="btn btn-lg btn-success">Add New Issue</button>
 </div>
 
 
@@ -85,8 +84,6 @@
                 <tr ng-repeat="project in allProjects">
                     <td ng-if="project.Lead.Username== authenticationService.getCurrentUser().userName" class="info">
                         {{project.Name}}
-                    </td>
-                    <td ng-if="project.Lead.Username== authenticationService.getCurrentUser().userName" class="info">
                         <a href="#/projects/{{project.Id}}/add-issue" class="btn btn-default btn-sm">Add Issue</a>
                         <a href="#projects/{{project.Id}}" class="btn btn-primary btn-sm">View</a>
                     </td>

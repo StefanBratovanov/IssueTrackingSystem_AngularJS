@@ -12,6 +12,16 @@ issueTracker.factory('projectsService', function ($http, baseServiceUrl, authent
             $http(getAllProjectsRequest).success(success).error(error);
         },
 
+        getAllProjectsPagination: function (params, success, error) {
+            var getAllProjectspagingRequest = {
+                method: 'GET',
+                url: baseServiceUrl + 'projects?pageSize=' + params.pageSize + '&pageNumber=' + params.startPage + '&filter=',
+                headers: authenticationService.getAuthHeaders()
+            };
+
+            $http(getAllProjectspagingRequest).success(success).error(error);
+        },
+
         getProjectById: function (id, success, error) {
             if (id) {
                 var getProjectRequest = {
@@ -36,7 +46,6 @@ issueTracker.factory('projectsService', function ($http, baseServiceUrl, authent
             var currentUser = authenticationService.getCurrentUser();
             return (currentUser != undefined) && (currentUser.isAdmin);
         }
-
     }
 });
 

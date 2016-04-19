@@ -7,7 +7,36 @@ issueTracker.controller('ProjectsController', function ($scope,
                                                         projectsService,
                                                         notifyService,
                                                         usersService,
-                                                        issuesService) {
+                                                        issuesService,
+                                                        pageSize) {
+    $scope.projectParams = {
+        'startPage': 1,
+        'pageSize': pageSize
+    };
+
+    projectsService.getAllProjects(
+        function success(data) {
+            $scope.allProjects = data;
+        },
+        function error(err) {
+            notifyService.showError("Projects loading failed", err);
+        }
+    );
+
+    $scope.getProjects = function () {
+        projectsService.getAllProjectsPagination($scope.projectParams,
+            function success(data) {
+                $scope.totalProjects = data.TotalPages * $scope.projectParams.pageSize;
+                $scope.projects = data.Projects;
+            },
+            function error(err) {
+                notifyService.showError("Projects loading failed", err);
+            }
+        );
+    };
+
+    $scope.getProjects();
+
     projectsService.getAllProjects(
         function success(data) {
             $scope.allProjects = data;
