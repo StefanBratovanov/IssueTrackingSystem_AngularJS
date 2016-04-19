@@ -16,9 +16,11 @@
     <tbody>
     <tr ng-repeat="project in projects">
         <td ng-if="$odd" class="info">{{project.Name}}
+            <a ng-if="authenticationService.isAdmin()" href="#/projects/{{project.Id}}/add-issue" class="btn btn-default btn-sm">Add Issue</a>
             <a href="#projects/{{project.Id}}" class="btn btn-primary btn-sm">View</a>
         </td>
         <td ng-if="$even" class="success">{{project.Name}}
+            <a ng-if="authenticationService.isAdmin()" href="#/projects/{{project.Id}}/add-issue" class="btn btn-default btn-sm">Add Issue</a>
             <a href="#projects/{{project.Id}}" class="btn btn-primary btn-sm">View</a>
         </td>
     </tr>

@@ -13,13 +13,13 @@ issueTracker.factory('projectsService', function ($http, baseServiceUrl, authent
         },
 
         getAllProjectsPagination: function (params, success, error) {
-            var getAllProjectspagingRequest = {
+            var getAllProjectsPagingRequest = {
                 method: 'GET',
                 url: baseServiceUrl + 'projects?pageSize=' + params.pageSize + '&pageNumber=' + params.startPage + '&filter=',
                 headers: authenticationService.getAuthHeaders()
             };
 
-            $http(getAllProjectspagingRequest).success(success).error(error);
+            $http(getAllProjectsPagingRequest).success(success).error(error);
         },
 
         getProjectById: function (id, success, error) {
@@ -62,7 +62,19 @@ issueTracker.factory('projectsService', function ($http, baseServiceUrl, authent
         isLeader: function (id) {
             var currentUser = authenticationService.getCurrentUser();
             return this.getProjectById(id);
+        },
+
+        editProject: function (projectData, success, error) {
+            var editProjectsRequest = {
+                method: 'PUT',
+                url: baseServiceUrl + 'projects/' + projectData.Id,
+                headers: authenticationService.getAuthHeaders(),
+                data: projectData
+            };
+
+            $http(editProjectsRequest).success(success).error(error);
         }
+
     }
 });
 

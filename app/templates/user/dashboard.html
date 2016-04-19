@@ -79,8 +79,8 @@
     <h3>Projects Affiliated To You</h3>
 
     <div ng-controller="ProjectsController">
-        <div class="col-lg-6">
-            <table class="table table-striped table-hover ">
+        <div class="col-lg-5">
+            <table class="table table-striped table-hover" id="projectsTable">
                 <h4>You are Project Leader in:</h4>
                 <tr>
                     <th>Project</th>
@@ -96,9 +96,8 @@
         </div>
     </div>
     <div ng-controller="IssuesController">
-        <div class="col-lg-6">
-
-            <table class="table table-striped table-hover ">
+        <div class="col-lg-7">
+            <table class="table table-striped table-hover" id="issuesTable">
                 <h4>Issues assigned to You:</h4>
                 <tr>
                     <th>Title</th>
@@ -108,7 +107,7 @@
                 </tr>
                 <tr ng-repeat="issueData in userIssues">
                     <td class="info">
-                        <a href="#/issues/{{issueData.Id}}">
+                        <a href="#/issues/{{issueData.Id}}" class="issueTitle">
                             {{issueData.Title}}
                         </a>
                     </td>
@@ -121,7 +120,7 @@
                         </a>
                     </td>
                     <td class="info">
-                            {{issueData.DueDate}}
+                            {{issueData.DueDate| date:'dd-MM-yyyy'}}
                     </td>
                 </tr>
             </table>

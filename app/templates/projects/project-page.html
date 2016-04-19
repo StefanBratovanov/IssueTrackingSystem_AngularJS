@@ -4,4 +4,11 @@
 <div>Description:<input type="text" value="{{projectData.Description}}"></div>
 <div>LeadId:(currentId:{{projectData.Lead.Id}})<input type="text" value="{{projectData.Lead.Username}}"></div>
 <div>Labels: <span ng-repeat="label in projectData.Labels">{{label.Name}}, </span></div>
-<div>Priorities: <span ng-repeat="prioritiy in projectData.Priorities">{{prioritiy.Name}}, </span></div>
+<div>Priorities: <span ng-repeat="priority in projectData.Priorities">{{priority.Name}}, </span></div>
+
+<div ng-if="projectData.Lead.Username === authenticationService.getCurrentUser().userName||authenticationService.isAdmin()"
+     class="info">
+    <a href="#/projects/{{projectData.Id}}/add-issue" class="btn btn-default btn-sm">Add Issue</a>
+    <a href="#projects/{{projectData.Id}}/edit" class="btn btn-primary btn-sm">Edit</a>
+</div>
+
