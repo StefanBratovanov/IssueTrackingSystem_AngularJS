@@ -47,8 +47,16 @@ issueTracker.controller('IssuesController', function ($scope,
         }
     );
 
-
-
+    $scope.changeStatus = function (issueId, statusId) {
+        issuesService.changeIssueStatus(issueId, statusId,
+            function success(data) {
+                $scope.issueData.AvailableStatuses = data;
+            },
+            function error(err) {
+                notifyService.showError("Status change failed", err);
+            }
+        );
+    };
 
 
 });

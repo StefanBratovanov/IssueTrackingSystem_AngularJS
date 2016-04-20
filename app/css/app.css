@@ -89,6 +89,10 @@ table > thead > tr > th {
     color: #d9534f;
 }
 
+.changeStatus{
+    float: right;
+}
+
 /*body > div.container > div > div.col-lg-7.ng-scope > table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1)*/
 
 

@@ -69,6 +69,17 @@ issueTracker.factory('issuesService', function ($http, baseServiceUrl, authentic
                 }).error(error);
 
             }
+        },
+
+        changeIssueStatus: function (issueId, statusId, success, error) {
+            if (issueId && statusId) {
+                var changeStatusRequest = {
+                    method: 'PUT',
+                    url: baseServiceUrl + 'issues/' + issueId + '/changestatus?statusId=' + statusId,
+                    headers: authenticationService.getAuthHeaders()
+                };
+                $http(changeStatusRequest).success(success).error(error);
+            }
         }
     }
 });
