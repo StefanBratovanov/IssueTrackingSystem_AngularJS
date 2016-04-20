@@ -34,7 +34,7 @@ issueTracker.factory('issuesService', function ($http, baseServiceUrl, authentic
             }
         },
 
-        getIssusesByProjectId: function (id, success, error) {
+        getIssuesByProjectId: function (id, success, error) {
             if (id) {
                 var getIssuesRequest = {
                     method: 'GET',
@@ -43,11 +43,34 @@ issueTracker.factory('issuesService', function ($http, baseServiceUrl, authentic
                 };
                 $http(getIssuesRequest).success(success).error(error);
             }
+        },
+
+        getIssueById: function (id, success, error) {
+            if (id) {
+                var getIssueRequest = {
+                    method: 'GET',
+                    url: baseServiceUrl + 'issues/' + id,
+                    headers: authenticationService.getAuthHeaders()
+                };
+                $http(getIssueRequest).success(function (response) {
+                    var issueData = response;
+                    var projectId = response.Project.Id;
+
+                    var getProjectDataRequest = {
+                        method: 'GET',
+                        url: baseServiceUrl + 'projects/' + projectId,
+                        headers: authenticationService.getAuthHeaders()
+                    };
+
+                    $http(getProjectDataRequest).success(function (response) {
+                        issueData.projectLeaderName = response.Lead.Username;
+                        success(issueData);
+                    }).error(error);
+                }).error(error);
+
+            }
         }
-
-
     }
 });
-
 
 

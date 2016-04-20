@@ -18,7 +18,7 @@ issueTracker.controller('ViewProjectController', function ($scope,
             }
         );
 
-        issuesService.getIssusesByProjectId(
+        issuesService.getIssuesByProjectId(
             $routeParams.id,
             function success(data) {
                 $scope.issuesData = data;

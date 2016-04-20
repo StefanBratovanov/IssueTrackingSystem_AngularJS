@@ -33,7 +33,7 @@ var issueTracker = angular.module('IssueTrackingSystem', [
         });
 
         $routeProvider.when('/projects/:id/add-issue', {
-            templateUrl: 'templates/user/add-new-issue.html',
+            templateUrl: 'templates/issues/add-new-issue.html',
             controller: 'ProjectsController'
         });
 
@@ -42,6 +42,10 @@ var issueTracker = angular.module('IssueTrackingSystem', [
             controller: 'EditProjectController'
         });
 
+        $routeProvider.when('/issues/:id', {
+            templateUrl: 'templates/issues/issue-page.html',
+            controller: 'IssuesController'
+        });
 
         $routeProvider.otherwise(
             {

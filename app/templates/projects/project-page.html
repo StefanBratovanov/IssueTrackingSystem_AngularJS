@@ -1,5 +1,5 @@
 <div class="col-lg-5">
-    <table class="table table-striped table-hover" id="projectsTable">
+    <table class="table table-striped" id="projectsTable">
         <h3>Project</h3>
         <tr>
             <th>Project Key</th>
@@ -50,10 +50,10 @@
         <tbody>
         <tr ng-repeat="issue in issuesData">
             <td ng-if="$odd" class="info issueTitle">
-                <a href="#/issues/{{issueData.Id}}" class="issueTitle">{{issue.Title}}</a>
+                <a href="#/issues/{{issue.Id}}" class="issueTitle">{{issue.Title}}</a>
             </td>
             <td ng-if="$even" class="success issueTitle">
-                <a href="#/issues/{{issueData.Id}}" class="issueTitle">{{issue.Title}}</a>
+                <a href="#/issues/{{issue.Id}}" class="issueTitle">{{issue.Title}}</a>
             </td>
             <td ng-if="$odd" class="info">{{issue.Description}}</td>
             <td ng-if="$even" class="success">{{issue.Description}}</td>
