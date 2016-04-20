@@ -67,8 +67,9 @@
     </div>
 </div>
 <div ng-if="authenticationService.isAdmin()">
-    <p>Hi. admin</p>
-    <a href="#/projects/add" class="btn btn-lg btn-success">Add New Project</a>
+    <h3>Admin area
+        <a href="#/projects/add" class="btn btn-danger">Add New Project</a>
+    </h3>
 </div>
 
 
@@ -120,7 +121,7 @@
                         </a>
                     </td>
                     <td class="info">
-                            {{issueData.DueDate| date:'dd-MM-yyyy'}}
+                        {{issueData.DueDate| date:'dd-MM-yyyy'}}
                     </td>
                 </tr>
             </table>

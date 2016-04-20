@@ -1,14 +1,53 @@
-<div>{{projectData.ProjectKey}}</div>
-<div>ProjectKey:{{projectData.ProjectKey}}"</div>
-<div>Name:<input type="text" value="{{projectData.Name}}"></div>
-<div>Description:<input type="text" value="{{projectData.Description}}"></div>
-<div>LeadId:(currentId:{{projectData.Lead.Id}})<input type="text" value="{{projectData.Lead.Username}}"></div>
-<div>Labels: <span ng-repeat="label in projectData.Labels">{{label.Name}}, </span></div>
-<div>Priorities: <span ng-repeat="priority in projectData.Priorities">{{priority.Name}}, </span></div>
+<div class="col-lg-5">
+    <table class="table table-striped table-hover" id="projectsTable">
+        <h3>{{projectData.ProjectKey}}</h3>
+        <tr>
+            <th>Project Key</th>
+            <td>{{projectData.ProjectKey}}</td>
+        </tr>
+        <tr>
+            <th>Project Name</th>
+            <td>{{projectData.Name}}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{projectData.Description}}</td>
+        </tr>
+        <tr>
+            <th>Leader</th>
+            <td>{{projectData.Lead.Username}}</td>
+        </tr>
+        <tr>
+            <th>LeadId</th>
+            <td>{{projectData.Lead.Id}}</td>
+        </tr>
+        <tr>
+            <th>Labels</th>
+            <td><span ng-repeat="label in projectData.Labels">{{label.Name}}; </span></td>
+        </tr>
+        <tr>
+            <th>Priorities</th>
+            <td><span ng-repeat="priority in projectData.Priorities">{{priority.Name}}; </span></td>
+        </tr>
+    </table>
 
-<div ng-if="projectData.Lead.Username === authenticationService.getCurrentUser().userName||authenticationService.isAdmin()"
-     class="info">
-    <a href="#/projects/{{projectData.Id}}/add-issue" class="btn btn-default btn-sm">Add Issue</a>
-    <a href="#projects/{{projectData.Id}}/edit" class="btn btn-primary btn-sm">Edit</a>
+    <div ng-if="projectData.Lead.Username === authenticationService.getCurrentUser().userName||authenticationService.isAdmin()"
+         class="info">
+        <a href="#/projects/{{projectData.Id}}/add-issue" class="btn btn-default btn-sm">Add Issue</a>
+        <a href="#projects/{{projectData.Id}}/edit" class="btn btn-primary btn-sm">Edit Project</a>
+    </div>
 </div>
 
+<!--<div>{{projectData.ProjectKey}}</div>-->
+<!--<div>ProjectKey:{{projectData.ProjectKey}}"</div>-->
+<!--<div>Name:<input type="text" value="{{projectData.Name}}"></div>-->
+<!--<div>Description:<input type="text" value="{{projectData.Description}}"></div>-->
+<!--<div>LeadId:(currentId:{{projectData.Lead.Id}})<input type="text" value="{{projectData.Lead.Username}}"></div>-->
+<!--<div>Labels: <span ng-repeat="label in projectData.Labels">{{label.Name}}; </span></div>-->
+<!--<div>Priorities: <span ng-repeat="priority in projectData.Priorities">{{priority.Name}}, </span></div>-->
+
+<!--<div ng-if="projectData.Lead.Username === authenticationService.getCurrentUser().userName||authenticationService.isAdmin()"-->
+<!--class="info">-->
+<!--<a href="#/projects/{{projectData.Id}}/add-issue" class="btn btn-default btn-sm">Add Issue</a>-->
+<!--<a href="#projects/{{projectData.Id}}/edit" class="btn btn-primary btn-sm">Edit</a>-->
+<!--</div>-->

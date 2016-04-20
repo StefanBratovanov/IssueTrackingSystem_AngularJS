@@ -17,7 +17,10 @@
                 <div class="col-lg-8">
                     <select id="editProjectLeader" class="form-control"
                             ng-model="editProjectData.LeadId" required>
-                        <option ng-repeat="user in users" value="{{user.Id}}">{{user.Username}}</option>
+                        <option ng-if="authenticationService.isAdmin()"
+                                ng-repeat="user in users" value="{{user.Id}}">{{user.Username}}
+                        </option>
+                        <option value="{{projectData.Lead.Id}}" selected>{{projectData.Lead.Username}}</option>
                     </select>
                 </div>
             </div>

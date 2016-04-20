@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
-<div class="navbar navbar-default navbar-fixed-top">
+<div class="navbar navbar-default navbar-fixed-top" ng-style="authenticationService.isAdmin() && {'background-color': '#325d88'}">
     <div class="container">
         <div class="navbar-header">
             <a href="#/" class="navbar-brand">Issue Tracking System</a>
@@ -23,11 +23,8 @@
                 <li>
                     <a href="#/">Dashboard</a>
                 </li>
-                <li>
+                <li ng-if="authenticationService.isAdmin()">
                     <a href="#/projects">Projects</a>
-                </li>
-                <li>
-                    <a href="#/">Home</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -75,6 +72,7 @@
 <script src="js/controllers/adminController.js"></script>
 <script src="js/controllers/issuesController.js"></script>
 <script src="js/controllers/editProjectController.js"></script>
+<script src="js/controllers/viewProjectController.js"></script>
 
 <script src="js/filters/projectKeyFilter.js"></script>
 <script src="js/directives/autocompleteDirective.js"></script>

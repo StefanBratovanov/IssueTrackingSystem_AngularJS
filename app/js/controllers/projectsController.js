@@ -14,20 +14,6 @@ issueTracker.controller('ProjectsController', function ($scope,
         'pageSize': pageSize
     };
 
-    $scope.getProjects = function () {
-        projectsService.getAllProjectsPagination($scope.projectParams,
-            function success(data) {
-                $scope.totalProjects = data.TotalPages * $scope.projectParams.pageSize;
-                $scope.projects = data.Projects;
-            },
-            function error(err) {
-                notifyService.showError("Projects loading failed", err);
-            }
-        );
-    };
-
-    $scope.getProjects();
-
     projectsService.getAllProjects(
         function success(data) {
             $scope.allProjects = data;
@@ -37,6 +23,7 @@ issueTracker.controller('ProjectsController', function ($scope,
         }
     );
 
+    //for add new issue
     projectsService.getProjectById($routeParams.id,
         function success(data) {
             $scope.projectData = data;
@@ -46,6 +33,7 @@ issueTracker.controller('ProjectsController', function ($scope,
         }
     );
 
+    //for add new issue
     usersService.getAllUsers(
         function success(data) {
             $scope.users = data;
@@ -106,9 +94,20 @@ issueTracker.controller('ProjectsController', function ($scope,
             notifyService.showError("Project loading failed", err);
         }
     );
-
-
 });
 
 
-
+//
+//$scope.getProjects = function () {
+//    projectsService.getAllProjectsPagination($scope.projectParams,
+//        function success(data) {
+//            $scope.totalProjects = data.TotalPages * $scope.projectParams.pageSize;
+//            $scope.projects = data.Projects;
+//        },
+//        function error(err) {
+//            notifyService.showError("Projects loading failed", err);
+//        }
+//    );
+//};
+//
+//$scope.getProjects();

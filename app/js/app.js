@@ -19,7 +19,7 @@ var issueTracker = angular.module('IssueTrackingSystem', [
 
         $routeProvider.when('/projects', {
             templateUrl: 'templates/projects/all-projects.html',
-            controller: 'ProjectsController'
+            controller: 'AdminController'
         });
 
         $routeProvider.when('/projects/add', {
@@ -29,7 +29,7 @@ var issueTracker = angular.module('IssueTrackingSystem', [
 
         $routeProvider.when('/projects/:id', {
             templateUrl: 'templates/projects/project-page.html',
-            controller: 'ProjectsController'
+            controller: 'ViewProjectController'
         });
 
         $routeProvider.when('/projects/:id/add-issue', {
