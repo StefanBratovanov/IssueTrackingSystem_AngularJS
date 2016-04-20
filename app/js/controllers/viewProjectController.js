@@ -5,6 +5,7 @@ issueTracker.controller('ViewProjectController', function ($scope,
                                                            $location,
                                                            authenticationService,
                                                            projectsService,
+                                                           issuesService,
                                                            notifyService) {
 
 
@@ -16,5 +17,15 @@ issueTracker.controller('ViewProjectController', function ($scope,
                 notifyService.showError("Project loading failed", err);
             }
         );
+
+        issuesService.getIssusesByProjectId(
+            $routeParams.id,
+            function success(data) {
+                $scope.issuesData = data;
+            },
+            function error(err) {
+                notifyService.showError("Issues loading failed", err);
+            }
+        )
     }
 );

@@ -48,16 +48,19 @@ table > tbody > tr > td > a {
     float: right;
 }
 
-#issuesTable > tbody > tr > td > a {
+#issuesTable, #projectIssuesTable > tbody > tr > td > a {
     float: left;
 }
 
 #issuesTable .issueTitle {
     color: #3e3f3a;
-
 }
 
 #projectsTable > tbody > tr > td {
+    color: #79a736;
+}
+
+#projectIssuesTable .issueTitle {
     color: #79a736;
 }
 
@@ -77,6 +80,8 @@ table > thead > tr > th {
 .navbar-right > ul > li:first-child > a {
     color: #8fbaf7;
 }
+
+/*body > div.container > div > div.col-lg-7.ng-scope > table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1)*/
 
 
 

@@ -32,6 +32,17 @@ issueTracker.factory('issuesService', function ($http, baseServiceUrl, authentic
                 };
                 $http(getProjectRequest).success(success).error(error);
             }
+        },
+
+        getIssusesByProjectId: function (id, success, error) {
+            if (id) {
+                var getIssuesRequest = {
+                    method: 'GET',
+                    url: baseServiceUrl + 'projects/' + id + '/issues',
+                    headers: authenticationService.getAuthHeaders()
+                };
+                $http(getIssuesRequest).success(success).error(error);
+            }
         }
 
 
