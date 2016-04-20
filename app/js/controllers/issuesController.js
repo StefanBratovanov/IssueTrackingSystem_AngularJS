@@ -26,19 +26,7 @@ issueTracker.controller('IssuesController', function ($scope,
 
     $scope.getUserIssues();
 
-    $scope.getProjectLeaderById = function (id) {
-        issuesService.getProjectById(id,
-            function success(data) {
-                $scope.projectLeaderName = data.Lead.Username;
-            },
-            function error(err) {
-                notifyService.showError("Project loading failed", err);
-            }
-        );
-    };
-
-    issuesService.getIssueById(
-        $routeParams.id,
+    issuesService.getIssueById($routeParams.id,
         function success(data) {
             $scope.issueData = data;
         },
@@ -47,10 +35,12 @@ issueTracker.controller('IssuesController', function ($scope,
         }
     );
 
-    $scope.changeStatus = function (issueId, statusId) {
+    $scope.changeStatus = function (issueId, statusId, statusName) {
         issuesService.changeIssueStatus(issueId, statusId,
             function success(data) {
                 $scope.issueData.AvailableStatuses = data;
+                //$rootScope.$broadcast("statusSelectionChanged", statusId);
+                $scope.$broadcast("statusSelectionChanged", statusName);
             },
             function error(err) {
                 notifyService.showError("Status change failed", err);
@@ -58,7 +48,22 @@ issueTracker.controller('IssuesController', function ($scope,
         );
     };
 
+    $scope.$on("statusSelectionChanged", function (event, selectedStatus) {
+        $scope.issueData.Status.Name = selectedStatus;
+
+        $scope.getUserIssues();
+    });
 
 });
 
+//$scope.getProjectLeaderById = function (id) {
+//    issuesService.getProjectById(id,
+//        function success(data) {
+//            $scope.projectLeaderName = data.Lead.Username;
+//        },
+//        function error(err) {
+//            notifyService.showError("Project loading failed", err);
+//        }
+//    );
+//};
 

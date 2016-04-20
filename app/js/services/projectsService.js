@@ -59,11 +59,6 @@ issueTracker.factory('projectsService', function ($http, baseServiceUrl, authent
             return (currentUser != undefined) && (currentUser.isAdmin);
         },
 
-        isLeader: function (id) {
-            var currentUser = authenticationService.getCurrentUser();
-            return this.getProjectById(id);
-        },
-
         editProject: function (projectData, success, error) {
             var editProjectsRequest = {
                 method: 'PUT',

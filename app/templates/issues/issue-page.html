@@ -65,7 +65,7 @@
         <h3>Available statuses</h3>
         <tr ng-repeat="status in  issueData.AvailableStatuses">
             <td class="info">{{status.Name}}
-                <button class="btn btn-primary btn-sm changeStatus" ng-click="changeStatus(issueData.Id, status.Id)">Change</button>
+                <button class="btn btn-primary btn-sm changeStatus" ng-click="changeStatus(issueData.Id, status.Id, status.Name)">Change</button>
             </td>
         </tr>
     </table>
