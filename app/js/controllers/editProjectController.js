@@ -15,7 +15,6 @@ issueTracker.controller('EditProjectController', function ($scope,
             projectsService.getProjectById(id,
                 function success(data) {
                     $scope.projectData = data;
-                    //console.log(data);
                 },
                 function error(err) {
                     notifyService.showError("Cannot load this project", err);

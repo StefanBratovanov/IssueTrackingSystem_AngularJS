@@ -1,6 +1,6 @@
 <div class="col-lg-6">
     <table class="table table-striped" id="projectsTable">
-        <h3>Issue Page</h3>
+        <h4>Issue Page</h4>
         <tr>
             <th>Issue Title</th>
             <td>{{issueData.Title}}</td>
@@ -62,11 +62,47 @@
      issueData.projectLeaderName === authenticationService.getCurrentUser().userName
      ||authenticationService.isAdmin()">
     <table class="table table-striped">
-        <h3>Available statuses</h3>
+        <h4>Available statuses</h4>
         <tr ng-repeat="status in  issueData.AvailableStatuses">
             <td class="info">{{status.Name}}
-                <button class="btn btn-primary btn-sm changeStatus" ng-click="changeStatus(issueData.Id, status.Id, status.Name)">Change</button>
+                <button class="btn btn-primary btn-sm changeStatus"
+                        ng-click="changeStatus(issueData.Id, status.Id, status.Name)">Change
+                </button>
             </td>
         </tr>
     </table>
 </div>
+
+<div class="col-lg-3 col-lg-offset-1">
+    <h3>Comments:</h3>
+    <div ng-repeat="comment in  issueComments">
+        <p class="info">{{comment.Author.Username}} on {{comment.CreatedOn| date:'dd-MM-yyyy'}}</p>
+        <p class="info">{{comment.Text}}</p>
+    </div>
+
+</div>
+
+<div class="col-lg-5 col-lg-offset-1"
+     ng-if="issueData.Assignee.Username === authenticationService.getCurrentUser().userName||
+     issueData.projectLeaderName === authenticationService.getCurrentUser().userName
+     ||authenticationService.isAdmin()">
+    <form class="form-horizontal" name="add-comment-form" id="add-comment-form">
+        <div class="form-group">
+            <div class="col-lg-7">
+                <p>Text:</p>
+                    <textarea class="form-control" id="issueComment"
+                              ng-model="issueComment.Text"
+                              required>
+                    </textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-8 ">
+                <button class="btn btn-primary btn-sm"
+                        ng-click="addComment(issueData.Id, issueComment)">Add Comment
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+

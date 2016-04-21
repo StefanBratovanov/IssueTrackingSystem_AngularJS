@@ -39,11 +39,36 @@ issueTracker.controller('IssuesController', function ($scope,
         issuesService.changeIssueStatus(issueId, statusId,
             function success(data) {
                 $scope.issueData.AvailableStatuses = data;
-                //$rootScope.$broadcast("statusSelectionChanged", statusId);
                 $scope.$broadcast("statusSelectionChanged", statusName);
             },
             function error(err) {
                 notifyService.showError("Status change failed", err);
+            }
+        );
+    };
+
+
+    $scope.getIssueComments = function () {
+        issuesService.getCommentsById($routeParams.id,
+            function success(data) {
+                $scope.issueComments = data;
+            },
+            function error(err) {
+                notifyService.showError("Issue Comments loading failed", err);
+            }
+        );
+    };
+
+    $scope.getIssueComments();
+
+    $scope.addComment = function (issueId, comment) {
+        issuesService.addCommentToIssue(issueId, comment,
+            function success(data) {
+                notifyService.showInfo("Comment added successfully");
+                $scope.$broadcast("totalCommentsChanged", data);
+            },
+            function error(err) {
+                notifyService.showError("Comment posting failed", err);
             }
         );
     };
@@ -53,6 +78,14 @@ issueTracker.controller('IssuesController', function ($scope,
 
         $scope.getUserIssues();
     });
+
+    $scope.$on("totalCommentsChanged", function (event, allComments) {
+        $scope.issueComments = allComments;
+        document.getElementById("issueComment").value = "";
+
+        $scope.getIssueComments();
+    });
+
 
 });
 

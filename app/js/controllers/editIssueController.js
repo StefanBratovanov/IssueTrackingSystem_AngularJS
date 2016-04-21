@@ -46,25 +46,6 @@ issueTracker.controller('EditIssueController', function ($scope,
                 });
         };
 
-        $scope.changeStatus = function (issueId, statusId, statusName) {
-            issuesService.changeIssueStatus(issueId, statusId,
-                function success(data) {
-                    $scope.issueData.AvailableStatuses = data;
-                    //$rootScope.$broadcast("statusSelectionChanged", statusId);
-                    $scope.$broadcast("statusSelectionChanged", statusName);
-                },
-                function error(err) {
-                    notifyService.showError("Status change failed", err);
-                }
-            );
-        };
-
-        $scope.$on("statusSelectionChanged", function (event, selectedStatus) {
-            $scope.issueData.Status.Name = selectedStatus;
-
-            $scope.getUserIssues();
-        });
-
         $scope.editIssue = function (editIssueData) {
             var labelsList = [];
 

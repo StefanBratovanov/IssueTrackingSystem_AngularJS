@@ -104,9 +104,33 @@ issueTracker.factory('issuesService', function ($http, baseServiceUrl, authentic
             };
 
             $http(editIssueRequest).success(success).error(error);
+        },
+
+        addCommentToIssue: function (issueId, comment, success, error) {
+            if (issueId && comment) {
+                var addCommentRequest = {
+                    method: 'POST',
+                    url: baseServiceUrl + 'issues/' + issueId + '/comments',
+                    headers: authenticationService.getAuthHeaders(),
+                    data: comment
+                };
+                $http(addCommentRequest).success(success).error(error);
+            }
+        },
+
+        getCommentsById: function (id, success, error) {
+            if (id) {
+                var getCommentsRequest = {
+                    method: 'GET',
+                    url: baseServiceUrl + 'issues/' + id + '/comments',
+                    headers: authenticationService.getAuthHeaders()
+                };
+                $http(getCommentsRequest).success(success).error(error);
+            }
         }
 
     }
 });
+
 
 
