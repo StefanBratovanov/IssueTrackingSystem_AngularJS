@@ -1,4 +1,6 @@
-<div class="col-lg-8">
+<div class="col-lg-8"
+     ng-if="authenticationService.isAdmin()||
+     issueData.projectLeaderName === authenticationService.getCurrentUser().userName">
     <div class="well bs-component">
         <form class="form-horizontal" name="change-password" id="edit-issue-form">
             <legend>Edit Issue</legend>
@@ -25,7 +27,8 @@
             <div class="form-group">
                 <label for="editIssueProject" class="col-lg-4 control-label">Project</label>
                 <div class="col-lg-8">
-                    <input type="text" id="editIssueProject" class="form-control" disabled placeholder="{{issueData.Project.Name}}">
+                    <input type="text" id="editIssueProject" class="form-control" disabled
+                           placeholder="{{issueData.Project.Name}}">
                 </div>
             </div>
             <div class="form-group">
@@ -78,17 +81,16 @@
 </div>
 
 
-
 <!--<div class="form-group">-->
-    <!--<label for="editIssueProject" class="col-lg-4 control-label">Project</label>-->
-    <!--<div class="col-lg-8">-->
-        <!--<select id="editIssueProject" class="form-control"-->
-                <!--ng-model="editIssueData.ProjectId" required ng-change="newProjectSelected()">-->
-            <!--<optgroup label={{issueData.Project.Name}}>-->
-                <!--<option ng-repeat="project in allProjects" value="{{project.Id}}">{{project.Name}}</option>-->
-            <!--</optgroup>-->
-        <!--</select>-->
-    <!--</div>-->
+<!--<label for="editIssueProject" class="col-lg-4 control-label">Project</label>-->
+<!--<div class="col-lg-8">-->
+<!--<select id="editIssueProject" class="form-control"-->
+<!--ng-model="editIssueData.ProjectId" required ng-change="newProjectSelected()">-->
+<!--<optgroup label={{issueData.Project.Name}}>-->
+<!--<option ng-repeat="project in allProjects" value="{{project.Id}}">{{project.Name}}</option>-->
+<!--</optgroup>-->
+<!--</select>-->
+<!--</div>-->
 <!--</div>-->
 
 <!--$scope.newProjectSelected = function () {-->

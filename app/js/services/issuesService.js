@@ -45,6 +45,18 @@ issueTracker.factory('issuesService', function ($http, baseServiceUrl, authentic
             }
         },
 
+        getIssuesByProjectIdPagination: function (params, id, success, error) {
+            if (id) {
+                var getIssuesPagingRequest = {
+                    method: 'GET',
+                    url: baseServiceUrl + 'issues?pageSize=' + params.pageSize
+                    + '&pageNumber=' + params.startPage + '&filter=Project.Id==' + id,
+                    headers: authenticationService.getAuthHeaders()
+                };
+                $http(getIssuesPagingRequest).success(success).error(error);
+            }
+        },
+
         getIssueById: function (id, success, error) {
             if (id) {
                 var getIssueRequest = {

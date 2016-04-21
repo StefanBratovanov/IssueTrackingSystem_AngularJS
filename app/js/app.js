@@ -12,7 +12,7 @@ var issueTracker = angular.module('IssueTrackingSystem', [
             controller: 'AuthenticationController'
         });
 
-        $routeProvider.when('/user/profile', {
+        $routeProvider.when('/user/profile/password', {
             templateUrl: 'templates/user/edit-password.html',
             controller: 'UserEditProfileController'
         });

@@ -22,7 +22,8 @@ ul.nav.navbar-nav.navbar-right > ul > li a {
 #register-form legend,
 #add-project-form legend,
 #edit-project-form legend,
-#edit-issue-form legend {
+#edit-issue-form legend,
+#change-password-form legend {
     font-weight: 600;
     color: #325d88;
 }
@@ -44,7 +45,8 @@ ul.nav.navbar-nav.navbar-right > ul > li a {
 
 #add-project-form div label,
 #edit-project-form div label,
-#edit-issue-form div label {
+#edit-issue-form div label,
+#change-password-form div label {
     text-align: left;
 }
 
@@ -101,10 +103,31 @@ table > thead > tr > th {
     float: right;
 }
 
-/*body > div.container > div > div.col-lg-7.ng-scope > table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1)*/
+ul.pagination {
+    display: table;
+    margin: 15px auto;
+}
 
+.pagination > .active > a, .pagination > .active > a:hover {
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
 
+.pagination > li > a:hover {
+    color: #23527c;
+    background-color: #eee;
+    border-color: #ddd;
 
+}
+
+.pagination > li > a {
+    background-color: #f8f5f0;
+    border-color: #ddd;
+
+}
 
 
 

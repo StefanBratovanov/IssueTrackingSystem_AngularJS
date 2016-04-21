@@ -48,7 +48,7 @@
             <th>Assignee</th>
         </tr>
         <tbody>
-        <tr ng-repeat="issue in issuesData">
+        <tr ng-repeat="issue in issues">
             <td ng-if="$odd" class="info issueTitle">
                 <a href="#/issues/{{issue.Id}}" class="issueTitle">{{issue.Title}}</a>
             </td>
@@ -64,7 +64,15 @@
         </tr>
         </tbody>
     </table>
+
+    <pagination total-items="totalIssues" ng-model="projectParams.startPage"
+                items-per-page="projectParams.pageSize" ng-change="getIssuesByProject()"
+                max-size="6" boundary-links="true">
+    </pagination>
 </div>
+
+
+
 
 <!--<div>{{projectData.ProjectKey}}</div>-->
 <!--<div>ProjectKey:{{projectData.ProjectKey}}"</div>-->

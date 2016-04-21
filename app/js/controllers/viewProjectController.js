@@ -6,8 +6,14 @@ issueTracker.controller('ViewProjectController', function ($scope,
                                                            authenticationService,
                                                            projectsService,
                                                            issuesService,
-                                                           notifyService) {
+                                                           notifyService,
+                                                           pageSize) {
 
+
+        $scope.projectParams = {
+            'startPage': 1,
+            'pageSize': pageSize
+        };
 
         projectsService.getProjectById($routeParams.id,
             function success(data) {
@@ -18,14 +24,30 @@ issueTracker.controller('ViewProjectController', function ($scope,
             }
         );
 
-        issuesService.getIssuesByProjectId(
-            $routeParams.id,
-            function success(data) {
-                $scope.issuesData = data;
-            },
-            function error(err) {
-                notifyService.showError("Issues loading failed", err);
-            }
-        )
+        $scope.getIssuesByProject = function () {
+            issuesService.getIssuesByProjectIdPagination($scope.projectParams, $routeParams.id,
+                function success(data) {
+                    $scope.totalIssues = data.TotalPages * $scope.projectParams.pageSize;
+                    $scope.issues = data.Issues;
+                },
+                function error(err) {
+                    notifyService.showError("Issues loading failed", err);
+                }
+            )
+        };
+
+        $scope.getIssuesByProject();
     }
 );
+
+//$scope.getIssuesByProjectId = function () {
+//    issuesService.getIssuesByProjectId(
+//        $routeParams.id,
+//        function success(data) {
+//            $scope.issuesData = data;
+//        },
+//        function error(err) {
+//            notifyService.showError("Issues loading failed", err);
+//        }
+//    )
+//};
