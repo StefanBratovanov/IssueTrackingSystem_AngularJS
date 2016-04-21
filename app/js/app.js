@@ -49,7 +49,7 @@ var issueTracker = angular.module('IssueTrackingSystem', [
 
         $routeProvider.when('/issues/:id/edit', {
             templateUrl: 'templates/issues/edit-issue.html',
-            controller: 'IssuesController'
+            controller: 'EditIssueController'
         });
 
         $routeProvider.otherwise(

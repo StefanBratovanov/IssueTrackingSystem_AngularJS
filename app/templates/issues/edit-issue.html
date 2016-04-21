@@ -1,83 +1,104 @@
-
-<div class=jumbotron style="height: 1000px">
-<h2 style="margin-top: 0">Edit Issue</h2>
-<div>
-<form style="width: 48%" class="pull-left">
-<div class="form-group">
-    <label for="exampleInputEmail1">Title</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Issue Title" value="Bad Request has no message describing the problem  ">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Assignee</label>
-    <select class="form-control">
-    	<option>Kircho</option>
-    	<option>Petkancho</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Project</label>
-    <select class="form-control">
-      <option>SIT</option>
-      <option>Cart Management</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Issue Key</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Issue Key" value="135hk3">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Priority</label>
-    <select class="form-control">
-      <option>Urgent</option>
-      <option>Medium</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Due Date</label>
-    <input type="date" class="form-control" id="exampleInputEmail1" placeholder="dd/mm/yyyy" value="28/03/2016">
-  </div>
-   <div class="form-group">
-    <label for="exampleInputPassword1">Labels (comma separated)</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Labels" value="Softuni, software">
-    <br>
-  </div>
-   <div class="form-group">
-    <label for="exampleInputPassword1">Description</label>
-    <textarea class="form-control" placeholder="Description">Add more information when throwing a BadRequest</textarea>
-  </div>
-  <button type="submit" class="btn btn-success">Edit Issue</button>
-</form>
- <form style="width:48%" class="pull-right">
-  <h3>Status transition scheme</h3>
-    <ul id="statuses">
-      <li><strong>Open</strong></li>
-      <li>
-      In Progress <button class="btn btn-sm btn-info">transition to status</button>
-        <ul>
-          <li>
-            Closed
-          </li>
-        </ul>
-      </li>
-      <li>
-      Resolved <button class="btn btn-sm btn-info">transition to status</button>
-        <ul>
-          <li>
-            Closed
-          </li>
-        </ul>
-        <ul>
-              <li>
-          Reopened
-          <ul>
-              <li>
-                Closed
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </form>
-  </div>
+<div class="col-lg-8">
+    <div class="well bs-component">
+        <form class="form-horizontal" name="change-password" id="edit-issue-form">
+            <legend>Edit Issue</legend>
+            <div class="form-group">
+                <label for="editIssueTitle" class="col-lg-4 control-label">Title</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" id="editIssueTitle" placeholder="{{issueData.Title}}"
+                           ng-model="editIssueData.Title" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="editIssueAssignee" class="col-lg-4 control-label">Assignee</label>
+                <div class="col-lg-8">
+                    <select id="editIssueAssignee" class="form-control"
+                            ng-model="editIssueData.AssigneeId" required>
+                        <option ng-if="issueData.projectLeaderName === authenticationService.getCurrentUser().userName
+                                   ||authenticationService.isAdmin()"
+                                ng-repeat="user in users" value="{{user.Id}}">{{user.Username}}
+                        </option>
+                        <option value="{{editIssueData.Assignee.Id}}" selected>{{issueData.Assignee.Username}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="editIssueProject" class="col-lg-4 control-label">Project</label>
+                <div class="col-lg-8">
+                    <input type="text" id="editIssueProject" class="form-control" disabled placeholder="{{issueData.Project.Name}}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="editIssuePriority" class="col-lg-4 control-label">Priority</label>
+                <div class="col-lg-8">
+                    <select id="editIssuePriority" class="form-control"
+                            ng-model="editIssueData.PriorityId" required>
+                        <option ng-repeat="priority in issueData.projectPriorities" value="{{priority.Id}}">
+                            {{priority.Name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="editIssueDueDate" class="col-lg-4 control-label">Due Date</label>
+                <div class="col-lg-8">
+                    <input type="date" class="form-control" id="editIssueDueDate"
+                           ng-model="editIssueData.DueDate" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="editIssueLabels" class="col-lg-4 control-label">Labels (comma separated)</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" id="editIssueLabels"
+                           auto-complete
+                           ng-model="editIssueData.Labels"
+                           ng-change="autoComplete()"
+                           required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="editIssueDescription" class="col-lg-4 control-label">Description</label>
+                <div class="col-lg-8">
+                    <textarea class="form-control" id="editIssueDescription" placeholder="{{issueData.Description}}"
+                              ng-model="editIssueData.Description"
+                              required>
+                    </textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-8 col-lg-offset-4">
+                    <button type="submit" class="btn btn-primary changePass"
+                            ng-click="editIssue(editIssueData)">Edit Issue
+                    </button>
+                    <a href="#/" class="btn btn-default">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
+
+
+
+<!--<div class="form-group">-->
+    <!--<label for="editIssueProject" class="col-lg-4 control-label">Project</label>-->
+    <!--<div class="col-lg-8">-->
+        <!--<select id="editIssueProject" class="form-control"-->
+                <!--ng-model="editIssueData.ProjectId" required ng-change="newProjectSelected()">-->
+            <!--<optgroup label={{issueData.Project.Name}}>-->
+                <!--<option ng-repeat="project in allProjects" value="{{project.Id}}">{{project.Name}}</option>-->
+            <!--</optgroup>-->
+        <!--</select>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--$scope.newProjectSelected = function () {-->
+<!--var projectId = $scope.editIssueData.ProjectId;-->
+<!--projectsService.getProjectById(projectId,-->
+<!--function success(data) {-->
+<!--$scope.issueData.NewPriorities = data.Priorities;-->
+<!--},-->
+<!--function error(err) {-->
+<!--notifyService.showError("Project load failed", err);-->
+<!--}-->
+<!--)-->
+<!--}-->

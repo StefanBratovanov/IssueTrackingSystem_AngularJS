@@ -94,7 +94,20 @@ issueTracker.controller('ProjectsController', function ($scope,
             notifyService.showError("Project loading failed", err);
         }
     );
-});
+
+    $scope.newProjectSelected = function () {
+        var projectId = $scope.issueData.ProjectId;
+        projectsService.getProjectById(projectId,
+            function success(data) {
+                $scope.projectData.NewPriorities = data.Priorities;
+            },
+            function error(err) {
+                notifyService.showError("Project load failed", err);
+            }
+        )
+    }
+})
+;
 
 
 //

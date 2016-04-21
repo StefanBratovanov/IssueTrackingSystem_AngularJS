@@ -29,6 +29,7 @@ issueTracker.controller('IssuesController', function ($scope,
     issuesService.getIssueById($routeParams.id,
         function success(data) {
             $scope.issueData = data;
+            console.log(data);
         },
         function error(err) {
             notifyService.showError("Issue loading failed", err);

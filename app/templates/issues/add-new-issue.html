@@ -23,15 +23,10 @@
                 <label for="issueProject" class="col-lg-4 control-label">Project</label>
                 <div class="col-lg-8">
                     <select id="issueProject" class="form-control"
-                            ng-model="issueData.ProjectId" required>
+                            ng-model="issueData.ProjectId" ng-change="newProjectSelected()" required>
                         <optgroup label={{projectData.Name}}>
                             <option ng-repeat="project in allProjects" value="{{project.Id}}">{{project.Name}}</option>
                         </optgroup>
-
-
-                        <!--<option value="" disabled selected hidden>{{projectData.Name}}</option>-->
-                        <!--<option selected="selected">{{projectData.Name}}</option>-->
-                        <!--<option ng-repeat="project in allProjects" value="{{project.Id}}">{{project.Name}}</option>-->
                     </select>
                 </div>
             </div>
@@ -40,7 +35,7 @@
                 <div class="col-lg-8">
                     <select id="issuePriority" class="form-control"
                             ng-model="issueData.PriorityId" required>
-                        <option ng-repeat="priority in projectData.Priorities" value="{{priority.Id}}">{{priority.Name}}
+                        <option ng-repeat="priority in projectData.NewPriorities" value="{{priority.Id}}">{{priority.Name}}
                         </option>
                     </select>
                 </div>
@@ -53,9 +48,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="projectLabels" class="col-lg-4 control-label">Labels (comma separated)</label>
+                <label for="issueLabels" class="col-lg-4 control-label">Labels (comma separated)</label>
                 <div class="col-lg-8">
-                    <input type="text" class="form-control" id="projectLabels"
+                    <input type="text" class="form-control" id="issueLabels"
                            auto-complete
                            ng-model="issueData.Labels"
                            ng-change="autoComplete()"
@@ -83,4 +78,8 @@
     </div>
 </div>
 
+
+<!--<option value="" disabled selected hidden>{{projectData.Name}}</option>-->
+<!--<option selected="selected">{{projectData.Name}}</option>-->
+<!--<option ng-repeat="project in allProjects" value="{{project.Id}}">{{project.Name}}</option>-->
 

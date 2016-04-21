@@ -18,7 +18,11 @@ ul.nav.navbar-nav.navbar-right > ul > li a {
     text-transform: none;
 }
 
-#login-form legend, #register-form legend, #add-project-form legend, #edit-project-form legend {
+#login-form legend,
+#register-form legend,
+#add-project-form legend,
+#edit-project-form legend,
+#edit-issue-form legend {
     font-weight: 600;
     color: #325d88;
 }
@@ -30,13 +34,17 @@ ul.nav.navbar-nav.navbar-right > ul > li a {
 #add-project-form button,
 #add-project-form a,
 #edit-project-form button,
-#edit-project-form a {
+#edit-project-form a,
+#edit-issue-form button,
+#edit-issue-form a {
     width: 49%;
     margin-left: 0.2%;
     font-size: 1em;
 }
 
-#add-project-form div label, #edit-project-form div label {
+#add-project-form div label,
+#edit-project-form div label,
+#edit-issue-form div label {
     text-align: left;
 }
 
@@ -89,7 +97,7 @@ table > thead > tr > th {
     color: #d9534f;
 }
 
-.changeStatus{
+.changeStatus {
     float: right;
 }
 

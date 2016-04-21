@@ -64,6 +64,7 @@ issueTracker.factory('issuesService', function ($http, baseServiceUrl, authentic
 
                     $http(getProjectDataRequest).success(function (response) {
                         issueData.projectLeaderName = response.Lead.Username;
+                        issueData.projectPriorities = response.Priorities;
                         success(issueData);
                     }).error(error);
                 }).error(error);
@@ -80,7 +81,19 @@ issueTracker.factory('issuesService', function ($http, baseServiceUrl, authentic
                 };
                 $http(changeStatusRequest).success(success).error(error);
             }
+        },
+
+        editIssue: function (editIssueData, success, error) {
+            var editIssueRequest = {
+                method: 'PUT',
+                url: baseServiceUrl + 'issues/' + editIssueData.Id,
+                headers: authenticationService.getAuthHeaders(),
+                data: editIssueData
+            };
+
+            $http(editIssueRequest).success(success).error(error);
         }
+
     }
 });
 
