@@ -1,4 +1,9 @@
 body {
+    background-color: #ccc
+}
+
+#password {
+    margin-bottom: 68px;
 }
 
 .navbar {
@@ -89,6 +94,7 @@ table > thead > tr > th {
 
 .btn-sm {
     padding: 2px 30px;
+    font-size: .8em;
 }
 
 .navbar-right > ul > li:first-child > a {
@@ -97,6 +103,8 @@ table > thead > tr > th {
 
 #adminArea {
     color: #d9534f;
+    margin-left: 170px;
+    font-size: 1.7em;
 }
 
 .changeStatus {
@@ -120,17 +128,35 @@ ul.pagination {
     color: #23527c;
     background-color: #eee;
     border-color: #ddd;
-
 }
 
 .pagination > li > a {
     background-color: #f8f5f0;
     border-color: #ddd;
-
 }
 
+.ui-autocomplete, .ui-front, .ui-menu, .ui-widget, .ui-widget-content {
+    list-style: none;
+}
 
+.ui-autocomplete li, .ui-front li, .ui-menu li, .ui-widget li, .ui-widget-content li {
+    background-color: #eee;
+    padding: 1px;
+    margin-bottom: 1px;
+    width: 15%;
+}
 
+.btn.btn-primary.btn-sm {
+    margin-right: 2px;
+}
 
+#addCommentButton, #editIssueButton {
+    width: 100%;
+    font-size: 1em;
+}
 
-
+.halfButtons {
+    width: 49.0%;
+    font-size: 1em;
+    padding: 12px 16px;
+}

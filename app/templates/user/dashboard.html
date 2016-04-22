@@ -67,10 +67,10 @@
     </div>
 </div>
 <div ng-if="authenticationService.isAdmin()">
-    <h3 id="adminArea">
+    <p>
+        <a href="#/projects" class="btn btn-danger">Projects</a>
         <a href="#/projects/add" class="btn btn-danger">Add New Project</a>
-        Admin area
-    </h3>
+    </p>
 </div>
 
 <div ng-if="authenticationService.isLoggedIn()">
