@@ -39,15 +39,3 @@ issueTracker.controller('ViewProjectController', function ($scope,
         $scope.getIssuesByProject();
     }
 );
-
-//$scope.getIssuesByProjectId = function () {
-//    issuesService.getIssuesByProjectId(
-//        $routeParams.id,
-//        function success(data) {
-//            $scope.issuesData = data;
-//        },
-//        function error(err) {
-//            notifyService.showError("Issues loading failed", err);
-//        }
-//    )
-//};

@@ -106,21 +106,4 @@ issueTracker.controller('ProjectsController', function ($scope,
             }
         )
     }
-})
-;
-
-
-//
-//$scope.getProjects = function () {
-//    projectsService.getAllProjectsPagination($scope.projectParams,
-//        function success(data) {
-//            $scope.totalProjects = data.TotalPages * $scope.projectParams.pageSize;
-//            $scope.projects = data.Projects;
-//        },
-//        function error(err) {
-//            notifyService.showError("Projects loading failed", err);
-//        }
-//    );
-//};
-//
-//$scope.getProjects();
+});

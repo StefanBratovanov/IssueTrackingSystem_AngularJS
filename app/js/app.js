@@ -1,4 +1,5 @@
 'use strict';
+
 var issueTracker = angular.module('IssueTrackingSystem', [
         'ngRoute',
         'ngResource',

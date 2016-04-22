@@ -6,9 +6,7 @@ issueTracker.controller('EditProjectController', function ($scope,
                                                            authenticationService,
                                                            projectsService,
                                                            notifyService,
-                                                           usersService,
-                                                           issuesService,
-                                                           pageSize) {
+                                                           usersService) {
 
 
         function getProjectById(id) {
@@ -68,7 +66,7 @@ issueTracker.controller('EditProjectController', function ($scope,
             editProjectData.Priorities = prioritiesList;
             editProjectData.Labels = labelsList;
             editProjectData.Id = $scope.projectData.Id;
-            
+
             projectsService.editProject(editProjectData,
                 function success() {
                     notifyService.showInfo("Project edited successfully");

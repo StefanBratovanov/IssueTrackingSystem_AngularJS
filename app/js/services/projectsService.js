@@ -73,23 +73,4 @@ issueTracker.factory('projectsService', function ($http, baseServiceUrl, authent
     }
 });
 
-//getAllProjects: function (success, error) {
-//    var getAllProjectsRequest = {
-//        method: 'GET',
-//        url: baseServiceUrl + 'projects',
-//        headers: authenticationService.getAuthHeaders()
-//    };
-//
-//    $http(getAllProjectsRequest).success(success).error(error);
-//},
-
-
-//getLabels: function (label, success, error) {
-//    var getLabelsRequest = {
-//        method: 'GET',
-//        url: baseServiceUrl + 'labels/?filter=' + label,
-//        headers: authenticationService.getAuthHeaders()
-//    };
-//    $http(getLabelsRequest).success(success).error(error);
-//}
 

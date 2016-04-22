@@ -128,7 +128,6 @@ issueTracker.factory('issuesService', function ($http, baseServiceUrl, authentic
                 $http(getCommentsRequest).success(success).error(error);
             }
         }
-
     }
 });
 

@@ -67,7 +67,6 @@ issueTracker.controller('EditIssueController', function ($scope,
                 }
             )
         };
-
     }
 );
 

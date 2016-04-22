@@ -33,7 +33,6 @@ issueTracker.controller('AdminController', function ($scope,
 
     $scope.getProjects();
 
-
     usersService.getAllUsers(
         function success(data) {
             $scope.allUsers = data;
@@ -99,40 +98,4 @@ issueTracker.controller('AdminController', function ($scope,
 
         $scope.projectKey = result;
     }
-
-
 });
-
-
-//$scope.getLabels = function (label) {
-//    projectsService.getLabels(label,
-//        function success(data) {
-//            var labelsNames = [];
-//            data.forEach(function (element) {
-//                labelsNames.push(element.Name)
-//            });
-//
-//            $scope.labels = labelsNames;
-//            //console.log(labelsNames);
-//        },
-//        function error(err) {
-//            notifyService.showError("labels loading failed", err);
-//        });
-//};
-
-
-//$scope.getlabelsList = function () {
-//    projectsService.getLabels(
-//        function success(data) {
-//            var labelsNames = [];
-//            data.forEach(function (element) {
-//                labelsNames.push(element.Name)
-//            });
-//
-//            $scope.labelsList = labelsNames;
-//            //console.log(labelsNames);
-//        },
-//        function error(err) {
-//            notifyService.showError("labels loading failed", err);
-//        });
-//};

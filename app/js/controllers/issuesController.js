@@ -47,7 +47,6 @@ issueTracker.controller('IssuesController', function ($scope,
         );
     };
 
-
     $scope.getIssueComments = function () {
         issuesService.getCommentsById($routeParams.id,
             function success(data) {
@@ -85,18 +84,6 @@ issueTracker.controller('IssuesController', function ($scope,
 
         $scope.getIssueComments();
     });
-
-
 });
 
-//$scope.getProjectLeaderById = function (id) {
-//    issuesService.getProjectById(id,
-//        function success(data) {
-//            $scope.projectLeaderName = data.Lead.Username;
-//        },
-//        function error(err) {
-//            notifyService.showError("Project loading failed", err);
-//        }
-//    );
-//};
 
