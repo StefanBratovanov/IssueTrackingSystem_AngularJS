@@ -24,7 +24,8 @@
                                 ng-repeat="user in users" value="{{user.Id}}">
                             {{user.Username}}
                         </option>
-                        <option value="{{projectData.Lead.Id}}" selected>
+                        <option ng-if="!authenticationService.isAdmin()"
+                                value="{{projectData.Lead.Id}}" selected>
                             {{projectData.Lead.Username}}
                         </option>
                     </select>

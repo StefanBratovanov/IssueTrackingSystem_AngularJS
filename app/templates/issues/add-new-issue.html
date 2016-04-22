@@ -1,4 +1,6 @@
-<div class="col-lg-8">
+<div class="col-lg-8"
+     ng-if="authenticationService.isAdmin()||
+     projectData.Lead.Username === authenticationService.getCurrentUser().userName">
     <div class="well bs-component">
         <form class="form-horizontal" name="change-password" id="add-project-form">
             <legend>Add new Issue</legend>
@@ -29,11 +31,16 @@
                 <div class="col-lg-8">
                     <select id="issueProject"
                             class="form-control"
-                            ng-change="newProjectSelected()"
-                            ng-model="issueData.ProjectId" required>
-                        <optgroup label={{projectData.Name}}>
-                            <option ng-repeat="project in allProjects" value="{{project.Id}}">
-                                {{project.Name}}
+                            ng-model="issueData.ProjectId"
+                            ng-change="newProjectSelected(issueData.ProjectId)"
+                             required>
+                        <option ng-if="authenticationService.isAdmin()"
+                                ng-repeat="project in allProjects" value="{{project.Id}}">
+                            {{project.Name}}
+                        </option>
+                        <optgroup ng-if="!authenticationService.isAdmin()" label={{projectData.Name}}>
+                            <option ng-repeat="userProject in userLeadProjects" value="{{userProject.Id}}">
+                                {{userProject.Name}}
                             </option>
                         </optgroup>
                     </select>

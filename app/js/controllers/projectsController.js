@@ -95,9 +95,8 @@ issueTracker.controller('ProjectsController', function ($scope,
         }
     );
 
-    $scope.newProjectSelected = function () {
-        var projectId = $scope.issueData.ProjectId;
-        projectsService.getProjectById(projectId,
+    $scope.newProjectSelected = function (id) {
+        projectsService.getProjectById(id,
             function success(data) {
                 $scope.projectData.NewPriorities = data.Priorities;
             },

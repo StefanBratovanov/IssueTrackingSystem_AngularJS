@@ -48,7 +48,7 @@
             <th>Assignee</th>
         </tr>
         <tbody>
-        <tr ng-repeat="issue in issues">
+        <tr ng-repeat="issue in issues|filter:issue">
             <td ng-if="$odd" class="info issueTitle">
                 <a href="#/issues/{{issue.Id}}" class="issueTitle">{{issue.Title}}</a>
             </td>
@@ -69,4 +69,7 @@
                 items-per-page="projectParams.pageSize" ng-change="getIssuesByProject()"
                 max-size="6" boundary-links="true">
     </pagination>
+
+    <input type="text" ng-model="issue.Assignee.Username">
+    <input type="text" ng-model="issue.Title">
 </div>
