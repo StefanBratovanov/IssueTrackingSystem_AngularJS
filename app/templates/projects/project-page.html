@@ -70,6 +70,18 @@
                 max-size="6" boundary-links="true">
     </pagination>
 
-    <input type="text" ng-model="issue.Assignee.Username">
-    <input type="text" ng-model="issue.Title">
+    <div class="col-lg-12">
+        <div id="filters">
+            <label>
+                <p>Filter by Assignee :</p>
+                <input type="text" ng-model="issue.Assignee.Username">
+            </label>
+            <label>
+                <p>Filter by Title :</p>
+                <input type="text" ng-model="issue.Title">
+            </label>
+        </div>
+    </div>
 </div>
+
+

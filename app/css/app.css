@@ -170,3 +170,11 @@ ul.pagination {
     margin-top: 10px;
 }
 
+#filters label{
+    display: inline-block;
+    margin-right: 2%;
+}
+
+#filters {
+    margin : auto 20%;
+}
