@@ -90,12 +90,14 @@ issueTracker.controller('AdminController', function ($scope,
     };
 
     $scope.setProjectKey = function (projectName) {
-        var tokens = projectName.split(' ');
-        var result = "";
-        tokens.forEach(function (element) {
-            result += element.substring(0, 1)
-        });
+        if (projectName) {
+            var tokens = projectName.split(' ');
+            var result = "";
+            tokens.forEach(function (element) {
+                result += element.substring(0, 1)
+            });
 
-        $scope.projectKey = result;
+            $scope.projectKey = result;
+        }
     }
 });

@@ -23,8 +23,18 @@ issueTracker.controller('AuthenticationController', function ($scope,
                 $location.path("/");
             },
             function error(err) {
-                notifyService.showError("User registration failed", err);
+                notifyService.showError("User registration failed. " + err.Message);
             }
         );
     };
+
+    $scope.setProjectKey = function (projectName) {
+        var tokens = projectName.split(' ');
+        var result = "";
+        tokens.forEach(function (element) {
+            result += element.substring(0, 1)
+        });
+
+        $scope.projectKey = result;
+    }
 });

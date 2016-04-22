@@ -25,7 +25,7 @@ issueTracker.factory('authenticationService', function ($http, baseServiceUrl) {
                     sessionStorage['currentUser'] = JSON.stringify(userData);
                     success(response);
                 }).error(error);
-            });
+            }).error(error);
         },
 
         login: function (userLoginData, success, error) {
